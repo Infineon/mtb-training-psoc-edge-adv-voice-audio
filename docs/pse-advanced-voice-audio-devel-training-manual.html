@@ -1,0 +1,2124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on training manual for PSOC™ Edge audio and voice applications, covering 16-bit versus 24-bit PDM capture and DEEPCRAFT™ Audio Enhancement workflows.
+">
+      
+      
+        <meta name="author" content="Infineon Technologies AG">
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab Manual - PSOC™ Edge Training - Advanced Voice and Audio Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#psoctm-edge-advanced-voice-and-audio-development-training-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="PSOC™ Edge Training - Advanced Voice and Audio Development" class="md-header__button md-logo" aria-label="PSOC™ Edge Training - Advanced Voice and Audio Development" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSOC™ Edge Training - Advanced Voice and Audio Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Infineon/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="PSOC™ Edge Training - Advanced Voice and Audio Development" class="md-nav__button md-logo" aria-label="PSOC™ Edge Training - Advanced Voice and Audio Development" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    PSOC™ Edge Training - Advanced Voice and Audio Development
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Infineon/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pse-advanced-voice-audio-devel-training-manual.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About this document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intended-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intended audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-development-tools-and-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required development tools and prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-understanding-pdm-microphone-configuration-16-bit-vs-24-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1: Understanding PDM microphone configuration: 16-bit vs 24-bit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-background-pdm-pcm-and-dynamic-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Background: PDM, PCM, and dynamic range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio data flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project creation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-observing-clipping-in-16-bit-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Observing clipping in 16-bit configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-reconfiguring-for-24-bit-high-dynamic-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Reconfiguring for 24-bit high dynamic range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-hands-on-with-deepcrafttm-audio-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2: Hands-on with DEEPCRAFT&trade; Audio Enhancement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepcrafttm-ae-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DEEPCRAFT&trade; AE pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-data-flow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio data flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-creation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project creation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-real-time-noise-suppression-in-the-functional-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Real-time Noise Suppression in the functional Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-real-time-tuning-with-afe-configurator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Real-time tuning with AFE configurator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-visualizing-the-ae-pipeline-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Visualizing the AE pipeline channels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-kit_pse84_eval-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: KIT_PSE84_EVAL details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revision history
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="psoctm-edge-advanced-voice-and-audio-development-training-manual">PSOC&trade; Edge: Advanced voice and audio development training manual<a class="headerlink" href="#psoctm-edge-advanced-voice-and-audio-development-training-manual" title="Permanent link">&para;</a></h1>
+<h2 id="about-this-document">About this document<a class="headerlink" href="#about-this-document" title="Permanent link">&para;</a></h2>
+<p>This is the lab manual for the PSOC&trade; Edge Advanced voice and audio development training.</p>
+<h2 id="scope-and-purpose">Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Permanent link">&para;</a></h2>
+<p>In these labs, you will learn how to:</p>
+<ol>
+<li>Create and run the emUSB-Device Audio Recorder application on KIT_PSE84_EVAL</li>
+<li>Analyze 16-bit PDM-PCM clipping caused by microphone DC offset</li>
+<li>Reconfigure the audio path for 24-bit capture and software gain</li>
+<li>Build, run, and tune the DEEPCRAFT&trade; Audio Enhancement pipeline</li>
+<li>Use Audacity and AFE configurator to observe, tune, and validate audio behavior</li>
+</ol>
+<h2 id="intended-audience">Intended audience<a class="headerlink" href="#intended-audience" title="Permanent link">&para;</a></h2>
+<p>This manual is intended for embedded developers, application engineers, and technical users working with PSOC&trade; Edge audio and voice workflows.</p>
+<h3 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#about-this-document">About this document</a></li>
+<li><a href="#scope-and-purpose">Scope and purpose</a></li>
+<li><a href="#intended-audience">Intended audience</a></li>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a></li>
+<li><a href="#lab-1-understanding-pdm-microphone-configuration---16-bit-vs-24-bit">Lab 1: Understanding PDM microphone configuration - 16-bit vs 24-bit</a></li>
+<li><a href="#lab-2-hands-on-with-deepcraft-audio-enhancement">Lab 2: Hands-on with DEEPCRAFT&trade; Audio Enhancement</a></li>
+<li><a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a></li>
+<li><a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a></li>
+<li><a href="#revision-history">Revision history</a></li>
+<li><a href="#disclaimer">Disclaimer</a></li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This lab manual provides advanced, hands-on training for the audio processing capabilities of the Infineon PSOC&trade; Edge E84 MCU. </p>
+<p>The first lab focuses on the low-level PDM-PCM hardware peripheral, exploring the trade-offs between 16-bit and 24-bit configurations to achieve higher dynamic range audio capture.</p>
+<p>The second lab transitions to a high-level, real-time audio pipeline, providing practical experience with the DEEPCRAFT&trade; Audio Enhancement middleware.</p>
+<p>These labs combine step-by-step instructions with the underlying technical theory so you can diagnose real-world audio artifacts, use PC-based tools for real-time analysis and tuning, and understand the workflows required to optimize audio quality and performance on the PSOC&trade; Edge platform.</p>
+<h2 id="required-development-tools-and-prerequisites">Required development tools and prerequisites<a class="headerlink" href="#required-development-tools-and-prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<h4 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h4>
+<ul>
+<li>PSOC&trade; Edge E84 Evaluation Kit - <a href="https://www.infineon.com/evaluation-board/kit-pse84-eval">KIT_PSE84_EVAL</a></li>
+<li>2 x USB-C cables (USB-C to USB-C or USB-C to USB-A)<ul>
+<li>For programming, debugging, and UART communication via the KitProg3 USB connector (J8)</li>
+<li>For streaming USB Audio Class (UAC) data via the Device USB port (J30)</li>
+</ul>
+</li>
+</ul>
+<h4 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ModusToolbox&trade; software v3.8 or later<ul>
+<li>Recommended installation via the <a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox&trade; setup tool</a></li>
+</ul>
+</li>
+<li>Eclipse IDE for ModusToolbox&trade; v2026.3.0 or later<ul>
+<li>Recommended installation via the <a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox&trade; setup tool</a></li>
+</ul>
+</li>
+<li>Edge Protect Security Suite v1.6 or later<ul>
+<li>Installed by the ModusToolbox&trade; setup tool as a dependency to ModusToolbox&trade;</li>
+</ul>
+</li>
+<li>ModusToolbox&trade; Programming Tools v1.8.1 or later<ul>
+<li>Installed by the ModusToolbox&trade; setup tool as a dependency to ModusToolbox&trade;</li>
+</ul>
+</li>
+<li>Board support package (BSP)<ul>
+<li>KIT_PSE84_EVAL_EPC2 v1.0.0 or later, available with ModusToolbox&trade;</li>
+</ul>
+</li>
+<li>Serial terminal emulator<ul>
+<li>Eclipse IDE for ModusToolbox&trade; includes a serial terminal. Other terminals include Tera Term and PuTTY.</li>
+</ul>
+</li>
+<li><a href="https://www.audacityteam.org/download/">Audacity</a> or a similar audio recording and analysis application<ul>
+<li>Required for audio capture, visualization, and analysis in Labs 1 and 2</li>
+</ul>
+</li>
+<li><a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/">LLVM for Arm&reg;</a> v19.1.5 or later if recommended by ModusToolbox&trade;</li>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.deepcraftaudioenhancementtechpack">DEEPCRAFT&trade; Audio Enhancement Tech Pack</a> v1.2.0 or later<ul>
+<li>Recommended installation via the <a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox&trade; setup tool</a></li>
+<li>Required for the AFE Configurator workflow used in Lab 2</li>
+</ul>
+</li>
+<li>Optional: create an account for <a href="https://deepcraft-voice-assistant.infineon.com/">DEEPCRAFT&trade; Voice Assistant</a></li>
+</ul>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Install the software and obtain the hardware listed above</li>
+<li>Basic understanding of ModusToolbox&trade; and PSOC&trade; Edge</li>
+<li>Familiarity with audio and voice processing concepts</li>
+<li>Completion of the <a href="https://github.com/Infineon/mtb-training-psoc-edge-e84-features">Technical Introduction to PSOC&trade; Edge E84 features (E2) training</a> is recommended</li>
+</ul>
+<p>For an introduction to PSOC&trade;, including a getting started guide to ModusToolbox&trade;, visit https://www.infineon.com/product-information/psocdeveloper.</p>
+<p>For PSOC&trade; Edge trainings, from beginner tutorials to advanced trainings, go to <a href="https://infineon-academy.csod.com/samldefault.aspx?ouid=1&amp;returnURL=%252fDeepLink%252fProcessRedirect.aspx%253fmodule%253dphnxdriver%2526routename%253dAdmin%252fPlayerPageRedirectHandler%2526Route%253d%25252flms-learner-playlist%25252fPlaylistDetails%2526Parameters%253dplaylistId%25253d8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC&trade; Edge Training Collection</a>.</p>
+<h2 id="lab-1-understanding-pdm-microphone-configuration-16-bit-vs-24-bit">Lab 1: Understanding PDM microphone configuration: 16-bit vs 24-bit<a class="headerlink" href="#lab-1-understanding-pdm-microphone-configuration-16-bit-vs-24-bit" title="Permanent link">&para;</a></h2>
+<p><span id="lab-1-understanding-pdm-microphone-configuration---16-bit-vs-24-bit"></span></p>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h2>
+<ul>
+<li>To demonstrate the dynamic range limitations of a 16-bit PDM-PCM configuration in the presence of microphone DC offset</li>
+<li>To observe real-time audio clipping as digital gain is increased</li>
+<li>To implement the 24-bit PDM-PCM configuration to resolve the clipping issue and achieve a higher usable dynamic range</li>
+</ul>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>This exercise begins with the default configuration of the USB audio recorder code example, which operates in a 16-bit word size configuration. This code example uses PDM microphones to capture the audio data and stream it over USB to a PC using the USB audio device class. An audio recorder software tool, such as <strong>Audacity</strong>, running on a computer initiates the recording and streaming of audio data. By default, the application is configured to sample stereo audio at 16 kHz sampling rate with 16-bit PCM bit-depth. The sample audio data is eventually transferred to the USB data endpoint buffer.</p>
+<p><img src="assets/images/image_001.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;"/></p>
+<p>The following are the steps:</p>
+<ol>
+<li>
+<p>We will modify this example to add real-time gain control via a terminal. We will then use Audacity to observe the audio waveform, specifically on the left channel, and identify the gain threshold (approximately +29 dB) where signal clipping occurs</p>
+</li>
+<li>
+<p>Users will perform a comprehensive modification of the project. This involves reconfiguring the PDM-PCM peripheral in the Device Configurator for 24-bit output, adding custom FIR filter coefficients, and updating the application code to use a software-based gain and 24-to-16-bit conversion. Finally, we will re-run the experiment to verify that the clipping is eliminated, confirming the superior dynamic range and headroom of the 24-bit pipeline</p>
+</li>
+</ol>
+<p>This code example shows how to record a short audio sample from a microphone, and then play it on a speaker or headphone. The example uses the PDM/PCM block to interface with a digital microphone. All recorded data is stored in the internal SRAM. Once the recording completes, the I2S block starts sending data to an external audio codec TLV320DAC1300. Press the user button on the kit to record an audio sample. When the button is released, it plays back the recorded audio when the button was pressed.</p>
+<h2 id="technical-background-pdm-pcm-and-dynamic-range">Technical Background: PDM, PCM, and dynamic range<a class="headerlink" href="#technical-background-pdm-pcm-and-dynamic-range" title="Permanent link">&para;</a></h2>
+<h3 id="the-pdm-pcm-conversion-pipeline">The PDM-PCM conversion pipeline<a class="headerlink" href="#the-pdm-pcm-conversion-pipeline" title="Permanent link">&para;</a></h3>
+<p>The PSOC&trade; Edge MCU acquires audio from the onboard digital microphones as a Pulse Density Modulation (PDM) signal. PDM is a 1-bit, high-sample-rate digital format. For processing, this must be converted to Pulse-Code Modulation (PCM), which is a multi-bit, lower-sample-rate format (for example, 16-bit at 16 kHz). This conversion is handled by the PDM-PCM hardware IP block, which uses a series of decimation filters, including a Cascaded Integrator Comb (CIC) filter, two Finite Impulse Response (FIR) filters, and a DC blocking filter, to reduce the sampling rate and increase the word length.</p>
+<h3 id="understanding-bit-depth-and-dynamic-range">Understanding bit depth and dynamic range<a class="headerlink" href="#understanding-bit-depth-and-dynamic-range" title="Permanent link">&para;</a></h3>
+<p>The dynamic range in digital audio represents the difference between the loudest possible signal (before clipping) and the quietest signal (the noise floor). Bit depth is the primary determinant of dynamic range. A 16-bit PCM signal provides a theoretical dynamic range of 96 dB, while 24-bit PCM provides 144 dB. While 96 dB is sufficient for many applications, it assumes the entire 16-bit range is usable.</p>
+<h3 id="16-bit-clipping-anomaly-a-technical-deep-dive">16-bit clipping anomaly: A technical deep dive<a class="headerlink" href="#16-bit-clipping-anomaly-a-technical-deep-dive" title="Permanent link">&para;</a></h3>
+<p>A critical scenario arises in the default 16-bit configuration that demonstrates this lab's core concept.</p>
+<p>With the default 16-bit configuration, setting gain value greater than 29 dB will cause clipping of audio data in left channel. This clipping occurs for a specific technical reason. The IM7* series microphone on the left channel has a physical characteristic, an "unequal DC offset", that shifts its baseline signal level away from zero. This DC offset effectively consumes a portion of the available 16-bit headroom.</p>
+<p>When the hardware PDM-PCM gain (applied via the<code>Cy_PDM_PCM_SetGain()</code> API) is increased, it amplifies <strong>both</strong> the desired AC audio signal and this unwanted DC offset. At a gain level of +29 dB (<code>CY_PDM_PCM_SEL_GAIN_29DB</code>) or higher, the amplified DC offset plus the incoming audio signal exceeds the maximum value that can be represented by a 16-bit signed integer, causing the signal to be "clipped" at its positive or negative limit. This clipping is an irreversible loss of audio information.</p>
+<p>The solution is to capture the audio at a higher bit depth (24-bit), which provides 144 dB of headroom. This extra headroom is more than enough to accommodate the DC offset <strong>and</strong> the audio signal. We can then apply gain in <strong>software</strong> (post-decimation) before converting the signal down to 16-bit for the remaining audio pipeline. This lab implements this exact solution.</p>
+<h2 id="audio-data-flow">Audio data flow<a class="headerlink" href="#audio-data-flow" title="Permanent link">&para;</a></h2>
+<p>The data flow for the initial 16-bit configuration is as follows:</p>
+<ol>
+<li>Audio is captured by the PDM microphones</li>
+<li>The PDM signal is fed to the PDM-PCM IP block, which is configured for 16-bit output. The hardware gain is applied</li>
+<li>The 16-bit PCM samples are read by the CM33 CPU via an interrupt</li>
+<li>The CM33 CPU transfers the 16-bit PCM data to the USB-device block</li>
+<li>The USB block streams the audio data to the host PC, which is received by Audacity as a microphone (USB audio recorder)</li>
+</ol>
+<h2 id="project-creation">Project creation<a class="headerlink" href="#project-creation" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Follow steps 1-4 in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a> to create a new application</li>
+<li>When creating the application, select the <strong>PSOC&trade; Edge emUSB-Device Audio Recorder</strong> application under the <strong>Peripherals</strong> section</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> To prevent issues with Windows path length, it is recommended to rename the project if your workspace path is long.</p>
+</blockquote>
+<p><img src="assets/images/image_002.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Once created, build and program the application</li>
+</ol>
+<h2 id="exercise-1-observing-clipping-in-16-bit-configuration">Exercise 1: Observing clipping in 16-bit configuration<a class="headerlink" href="#exercise-1-observing-clipping-in-16-bit-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="hardware-connection-and-audacity-setup">Hardware connection and audacity setup<a class="headerlink" href="#hardware-connection-and-audacity-setup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect the first USB cable from your PC to the <strong>KitProg3 USB connector (J8)</strong> and the second USB cable to the <strong>Device USB connector (J30)</strong> of the evaluation kit as shown in the following figure</li>
+</ol>
+<p><img src="assets/images/image_003.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Open <strong>Tera Term</strong> or any other serial terminal program and connect to the KitProg3 COM port. Use serial settings <strong>115200</strong> baud, and <strong>8N1</strong></li>
+<li>The terminal will display the message <strong>PSOC Edge MCU: Audio recorder using emUSB-device</strong></li>
+<li>Verify that Windows has successfully enumerated the device. In <em>Control Panel &gt; Sound</em>, you should see a new recording device named <strong>Audio Control</strong></li>
+</ol>
+<p><img src="assets/images/image_004.png" alt="A screenshot of a computer" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Open <strong>Audacity</strong></li>
+<li>In the device toolbar, set the Audio Host to <strong>MME</strong>, the recording device to <strong>Microphone (Audio Control)</strong>, and the recording channels to <strong>2 (Stereo)</strong>.  <blockquote>
+<p><strong>Note:</strong> Click <em>View -&gt; Toolbars -&gt; Device Toolbar</em> if the toolbar is not enabled by default</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="assets/images/image_005.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>Click the <strong>Record</strong> button. Speak into the microphones (located on the upper right corner of the kit as shown in <a href="#appendix-b-kit_pse84_eval-details">KIT_PSE84_EVAL details</a>) and verify that you see a stereo waveform being captured</li>
+</ol>
+<h3 id="modify-the-application-add-gain-control">Modify the application: add gain control<a class="headerlink" href="#modify-the-application-add-gain-control" title="Permanent link">&para;</a></h3>
+<p>In this lab, we will use an audio sampling rate of 16 kHz, which is the standard rate for most voice applications. </p>
+<ol>
+<li>Set the sampling rate by editing <strong>AUDIO_IN_SAMPLE_FREQ</strong> in <em>proj_cm33_ns/include/audio.h</em> file<blockquote>
+<p><strong>Note</strong>: the diff code blocks use <code>+</code> and <code>-</code> to highlight modifications throughout this document. Modify the corresponding lines in your application.</p>
+</blockquote>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>/* USB Audio IN Endpoint configuration data */
+#define AUDIO_IN_NUM_CHANNELS (2U)
+#define AUDIO_IN_SUB_FRAME_SIZE (2U) /* In bytes */
+#define AUDIO_IN_BIT_RESOLUTION (16U)
+<span class="gi">+#define AUDIO_IN_SAMPLE_FREQ AUDIO_SAMPLING_RATE_16KHZ  // &lt;-- update</span>
+</code></pre></div>
+<ol start="2">
+<li>In order to observe the clipping artifact, we need to disable the DC blocking filter. Otherwise, the clipped audio will be completely nullified by the DC blocking filter producing zero output at higher gain values. Open the <em>proj_cm33_ns/source/audio_in.c</em> file and disable DC blocking filter by updating the <strong>pdm_pcm_channel_2_config</strong> and <strong>pdm_pcm_channel_3_config</strong> structures are highlighted in green in the following code</li>
+</ol>
+<div class="highlight"><pre><span></span><code>const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_2_config =
+{
+<span class="w"> </span>   ...
+#elif(AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_44KHZ)
+<span class="w"> </span>   .cic_decim_code  = CY_PDM_PCM_CHAN_CIC_DECIM_16,
+<span class="w"> </span>   .fir1_decim_code = CY_PDM_PCM_CHAN_FIR1_DECIM_2,
+<span class="w"> </span>   .fir1_scale = 5,
+#endif
+<span class="gi">+    .dc_block_disable = true,   // &lt;-- update</span>
+<span class="w"> </span>   .dc_block_code = CY_PDM_PCM_CHAN_DCBLOCK_CODE_16,
+};
+const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
+{
+<span class="w"> </span>   ...
+#elif(AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_44KHZ)
+<span class="w"> </span>   .cic_decim_code  = CY_PDM_PCM_CHAN_CIC_DECIM_16,
+<span class="w"> </span>   .fir1_decim_code = CY_PDM_PCM_CHAN_FIR1_DECIM_2,
+<span class="w"> </span>   .fir1_scale = 5,
+#endif
+<span class="gi">+    .dc_block_disable = true,   // &lt;-- update</span>
+<span class="w"> </span>   .dc_block_code = CY_PDM_PCM_CHAN_DCBLOCK_CODE_16,
+};
+</code></pre></div>
+<ol start="3">
+<li>In the same file, add the below function definition above the <code>audio_in_init()</code> function<blockquote>
+<p><strong>Note</strong>: C code blocks used throughout the document use C syntax and can be copy-pasted directly to the application.</p>
+</blockquote>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cm">/* &lt;-- Add this function --&gt; */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">audio_gain_control_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">CY_UNUSED_PARAMETER</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cy_en_pdm_pcm_gain_sel_t</span><span class="w"> </span><span class="n">current_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_GAIN_5DB</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Set initial gain */</span>
+<span class="w">    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gain: Scale Value = %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_available</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="cm">/* Check if any characters are available in UART RX FIFO (non-blocking) */</span>
+<span class="w">        </span><span class="n">num_available</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cy_SCB_UART_GetNumInRxFifo</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num_available</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Read character from UART */</span>
+<span class="w">            </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">read_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cy_SCB_UART_Get</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">read_value</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_SCB_UART_RX_NO_DATA</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">char</span><span class="w"> </span><span class="n">received_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">read_value</span><span class="p">;</span>
+<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">gain_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="cm">/* Increase gain */</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_scale</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_GAIN_83DB</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">current_scale</span><span class="w"> </span><span class="o">--</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">gain_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">else</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Already at maximum gain!</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="cm">/* Decrease gain */</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_scale</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_GAIN_NEGATIVE_103DB</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">current_scale</span><span class="w"> </span><span class="o">++</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">gain_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">else</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Already at minimum gain!</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gain_changed</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="cm">/* Apply new gain to both channels */</span>
+<span class="w">                    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gain: Scale value = %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="cm">/* Small delay to avoid busy-waiting and allow other tasks to run */</span>
+<span class="w">        </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span><span class="w">   </span><span class="cm">/* &lt;-- End of added function --&gt; */</span>
+</code></pre></div>
+<ol start="4">
+<li>In the <code>audio_in_init()</code> function add the FreeRTOS task creation code highlighted in green in the below code</li>
+</ol>
+<div class="highlight"><pre><span></span><code>void audio_in_init(void)
+{
+<span class="w"> </span>   ...
+
+<span class="w"> </span>   /* Create the AUDIO Write RTOS task */
+<span class="w"> </span>   rtos_task_status = xTaskCreate(audio_in_process, &quot;Audio In Task&quot;, AUDIO_TASK_STACK_DEPTH, NULL,
+<span class="w"> </span>           AUDIO_WRITE_TASK_PRIORITY, &amp;rtos_audio_in_task);
+<span class="w"> </span>   if (pdPASS != rtos_task_status)
+<span class="w"> </span>   {
+<span class="w"> </span>       handle_app_error();
+<span class="w"> </span>   }
+
+<span class="gi">+   /** &lt;-- Add code to create task --&gt; **/</span>
+<span class="gi">+   /* Create the Audio Gain Control RTOS task with lower priority */</span>
+<span class="gi">+    rtos_task_status = xTaskCreate(audio_gain_control_task, &quot;Gain Control Task&quot;, 512u, NULL, 1u, NULL);</span>
+<span class="gi">+    if (pdPASS != rtos_task_status)</span>
+<span class="gi">+    {</span>
+<span class="gi">+        handle_app_error();</span>
+<span class="gi">+    }   /** &lt;-- End of added code to create task --&gt; **/</span>
+}
+</code></pre></div>
+<ol start="5">
+<li><em>[Info]</em> In the newly added <strong>audio_gain_control_task()</strong> task, the PDM gain is dynamically controlled using the <strong>Cy_PDM_PCM_SetGain()</strong> API. This PDL API’s last argument is an enum <strong>cy_en_pdm_pcm_gain_sel_t</strong> that maps scale values (0-31) to decibel (dB) levels, as shown in the following table</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Enum value</strong></th>
+<th><strong>Gain (dB)</strong></th>
+<th><strong>Scale value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_83DB</td>
+<td>83 dB</td>
+<td>0</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_77DB</td>
+<td>77 dB</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_71DB</td>
+<td>71 dB</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_65DB</td>
+<td>65 dB</td>
+<td>3</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_59DB</td>
+<td>59 dB</td>
+<td>4</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_53DB</td>
+<td>53 dB</td>
+<td>5</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_47DB</td>
+<td>47 dB</td>
+<td>6</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_41DB</td>
+<td>41 dB</td>
+<td>7</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_35DB</td>
+<td>35 dB</td>
+<td>8</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_29DB</td>
+<td>29 dB</td>
+<td>9</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_23DB</td>
+<td>23 dB</td>
+<td>10</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_17DB</td>
+<td>17 dB</td>
+<td>11</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_11DB</td>
+<td>11 dB</td>
+<td>12</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_5DB</td>
+<td>5 dB</td>
+<td>13</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_1DB</td>
+<td>-1 dB</td>
+<td>14</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_7DB</td>
+<td>-7 dB</td>
+<td>15</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_13DB</td>
+<td>-13 dB</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_19DB</td>
+<td>-19 dB</td>
+<td>17</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_25DB</td>
+<td>-25 dB</td>
+<td>18</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_31DB</td>
+<td>-31 dB</td>
+<td>19</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_37DB</td>
+<td>-37 dB</td>
+<td>20</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_43DB</td>
+<td>-43 dB</td>
+<td>21</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_49DB</td>
+<td>-49 dB</td>
+<td>22</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_55DB</td>
+<td>-55 dB</td>
+<td>23</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_61DB</td>
+<td>-61 dB</td>
+<td>24</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_67DB</td>
+<td>-67 dB</td>
+<td>25</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_73DB</td>
+<td>-73 dB</td>
+<td>26</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_79DB</td>
+<td>-79 dB</td>
+<td>27</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_85DB</td>
+<td>-85 dB</td>
+<td>28</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_91DB</td>
+<td>-91 dB</td>
+<td>29</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_97DB</td>
+<td>-97 dB</td>
+<td>30</td>
+</tr>
+<tr>
+<td>CY_PDM_PCM_SEL_GAIN_NEGATIVE_103DB</td>
+<td>-103 dB</td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+<h3 id="real-time-observation-of-clipping">Real-time observation of clipping<a class="headerlink" href="#real-time-observation-of-clipping" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Build and flash the modified <strong>proj_cm33_ns</strong> application</li>
+<li>Start recording in Audacity</li>
+<li>Play any continuous audio like a sine tone near the kit’s PDM microphones</li>
+<li>Observe the Audacity waveform and notice the audio amplitude for the gain value you set in the code. The default value for gain in scale is 13 that maps to 5 dB</li>
+<li>Increase the gain by pressing the <strong>"u"</strong> key in the serial terminal. Observe the message <strong>Gain: Scale value = 12</strong>, indicating that the scale value has decreased and the gain has increased</li>
+</ol>
+<p><img src="assets/images/image_007.png" alt="A screen shot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p>You can also observe the audio amplitude increase in the audio recording on Audacity. Repeat this step for other gain values.</p>
+<p>Additionally, you can decrease the gain by pressing the <strong>"d"</strong> key.</p>
+<ol start="6">
+<li>Notice that as the scale value decreases below ~7-9 (29 dB – 41 dB), the top waveform begins to flatten at the top. This is audio clipping. The bottom waveform will likely still have headroom. This is indicated in the below figure</li>
+</ol>
+<p><img src="assets/images/image_008.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>Due to audio clipping, the audio signal will be unusable for any application. The exact clipping thresholds may vary depending on the audio source and the distance between the source and the microphones. However, with the 16-bit configuration, clipping occurs prematurely, especially on one of the channels. This confirms the behavior described in the technical background</li>
+</ol>
+<p>With this behavior, when the DC blocking filter is enabled, the output at higher gain levels (such as 47 dB) can be zero because the audio is fully clipped. Therefore, the effective PCM range must be improved before applying the DC blocking filter. This is done using the 24-bit PDM configuration described in the next section.</p>
+<h2 id="exercise-2-reconfiguring-for-24-bit-high-dynamic-range">Exercise 2: Reconfiguring for 24-bit high dynamic range<a class="headerlink" href="#exercise-2-reconfiguring-for-24-bit-high-dynamic-range" title="Permanent link">&para;</a></h2>
+<p>Now, we will modify the project to fix the clipping issue.</p>
+<h3 id="modifying-the-application-code">Modifying the application code<a class="headerlink" href="#modifying-the-application-code" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Device Configurator</strong> and change the following <strong>PDM0</strong> parameters.
+This application overrides these changes in code because we will modify source code directly in subsequent steps; however, you may refer to the following information for any other application configuring PDM microphones using the Device Configurator</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>PDM0 parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel 2 Config - Word size</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Channel 2 Config - FIR0 scale</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Channel 3 Config - Word size</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Channel 3 Config - FIR0 scale</td>
+<td>16</td>
+</tr>
+<tr>
+<td>PDM Config - User Configure FIR0</td>
+<td>Enable</td>
+</tr>
+<tr>
+<td>PDM Config - User Configure FIR1</td>
+<td>Enable</td>
+</tr>
+</tbody>
+</table>
+<p><img src="assets/images/image_009.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Add the FIR coefficients</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>FIR0 coefficient</th>
+<th>Data [0:1]</th>
+<th>FIR1 coefficient</th>
+<th>Data [0:1]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIR0 Coeff0</td>
+<td>5, 12</td>
+<td>FIR1 Coeff0</td>
+<td>190, 258</td>
+</tr>
+<tr>
+<td>FIR0 Coeff1</td>
+<td>-2, -57</td>
+<td>FIR1 Coeff1</td>
+<td>-106, -87</td>
+</tr>
+<tr>
+<td>FIR0 Coeff2</td>
+<td>-106, -23</td>
+<td>FIR1 Coeff2</td>
+<td>16, 169</td>
+</tr>
+<tr>
+<td>FIR0 Coeff3</td>
+<td>245, 466</td>
+<td>FIR1 Coeff3</td>
+<td>-35, -182</td>
+</tr>
+<tr>
+<td>FIR0 Coeff4</td>
+<td>202, -684</td>
+<td>FIR1 Coeff4</td>
+<td>-5, 226</td>
+</tr>
+<tr>
+<td>FIR0 Coeff5</td>
+<td>-1509, -1005</td>
+<td>FIR1 Coeff5</td>
+<td>40, -261</td>
+</tr>
+<tr>
+<td>FIR0 Coeff6</td>
+<td>1566, 5357</td>
+<td>FIR1 Coeff6</td>
+<td>-97, 300</td>
+</tr>
+<tr>
+<td>FIR0 Coeff7</td>
+<td>8191, 8191</td>
+<td>FIR1 Coeff7</td>
+<td>173, -336</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff8</td>
+<td>-276, 369</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff9</td>
+<td>418, -398</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff10</td>
+<td>-630, 422</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff11</td>
+<td>986, -439</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff12</td>
+<td>-1764, 450</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIR1 Coeff13</td>
+<td>5480, 8191</td>
+</tr>
+</tbody>
+</table>
+<div style="display:flex; gap:16px; justify-content:center; align-items:flex-start; flex-wrap:nowrap;">
+  <img src="assets/images/image_010.png" alt="A screenshot of a computer" style="width:calc(50% - 8px); max-width:460px; min-width:0; height:auto;" />
+  <img src="assets/images/image_011.png" alt="A screenshot of a computer" style="width:calc(50% - 8px); max-width:460px; min-width:0; height:auto;" />
+</div>
+
+<ol start="3">
+<li>Open <em>proj_cm33_ns/source/audio_in.c</em> and add the following global variable and structure</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/*****************************************************************************</span>
+<span class="cm">* Global Variables</span>
+<span class="cm">*****************************************************************************/</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">sw_gain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">     </span><span class="cm">/*&lt;-- Add global variable --&gt;*/</span>
+
+<span class="cm">/**  &lt;-- Add structure --&gt; **/</span>
+<span class="k">const</span><span class="w"> </span><span class="n">cy_stc_pdm_pcm_config_v2_t</span><span class="w"> </span><span class="n">CYBSP_PDM_config_24_bit</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clkDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clksel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_SRSS_CLOCK</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">halverate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_PDM_PCM_RATE_FULL</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fir0_coeff_user_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fir1_coeff_user_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fir0_coeff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-2</span><span class="p">,</span><span class="w"> </span><span class="mi">-57</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-106</span><span class="p">,</span><span class="w"> </span><span class="mi">-23</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">245</span><span class="p">,</span><span class="w"> </span><span class="mi">466</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">202</span><span class="p">,</span><span class="w"> </span><span class="mi">-684</span><span class="p">},</span><span class="w"> </span>
+<span class="w">                   </span><span class="p">{</span><span class="mi">-1509</span><span class="p">,</span><span class="w"> </span><span class="mi">-1005</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">1566</span><span class="p">,</span><span class="w"> </span><span class="mi">5357</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">8191</span><span class="p">,</span><span class="w"> </span><span class="mi">8191</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fir1_coeff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">190</span><span class="p">,</span><span class="w"> </span><span class="mi">258</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-106</span><span class="p">,</span><span class="w"> </span><span class="mi">-87</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">169</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-35</span><span class="p">,</span><span class="w"> </span><span class="mi">-182</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">226</span><span class="p">},</span>
+<span class="w">                   </span><span class="p">{</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">-261</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-97</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">173</span><span class="p">,</span><span class="w"> </span><span class="mi">-336</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-276</span><span class="p">,</span><span class="w"> </span><span class="mi">369</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">418</span><span class="p">,</span><span class="w"> </span><span class="mi">-398</span><span class="p">},</span>
+<span class="w">                   </span><span class="p">{</span><span class="mi">-630</span><span class="p">,</span><span class="w"> </span><span class="mi">422</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">986</span><span class="p">,</span><span class="w"> </span><span class="mi">-439</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-1764</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5480</span><span class="p">,</span><span class="w"> </span><span class="mi">8191</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="p">};</span><span class="w"> </span><span class="cm">/**  &lt;-- End of added structure --&gt; **/</span>
+</code></pre></div>
+<code>CYBSP_PDM_config_24_bit</code> is configuring the coefficients directly in code, instead of using Device Configurator, and <code>sw_gain</code> will be used to adjust the gain in software.</p>
+<ol start="4">
+<li>Open <em>proj_cm33_ns/source/audio_in.c</em> and modify the structure members as highlighted in the following code</li>
+</ol>
+<div class="highlight"><pre><span></span><code>const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_2_config =
+{
+<span class="w"> </span>   .sampledelay = 1,
+<span class="gi">+    .wordSize = CY_PDM_PCM_WSIZE_24_BIT,    // &lt;-- update</span>
+<span class="w"> </span>   .signExtension = true,
+<span class="w"> </span>   .rxFifoTriggerLevel = 31,
+<span class="w"> </span>   .fir0_enable = true,  // &lt;-- update
+<span class="gi">+    .fir0_decim_code = CY_PDM_PCM_CHAN_FIR0_DECIM_3, // &lt;-- update</span>
+<span class="w"> </span>   .fir0_scale = 16,  // &lt;-- update
+#if (AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_16KHZ)
+<span class="gi">+    .cic_decim_code  = CY_PDM_PCM_CHAN_CIC_DECIM_16,  // &lt;-- update</span>
+<span class="gi">+    .fir1_decim_code = CY_PDM_PCM_CHAN_FIR1_DECIM_2, // &lt;-- update</span>
+<span class="w"> </span>   .fir1_scale = 4, // &lt;-- update
+#elif(AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_32KHZ)
+...
+#endif
+<span class="gi">+    .dc_block_disable = false, // &lt;-- update</span>
+<span class="w"> </span>   .dc_block_code = CY_PDM_PCM_CHAN_DCBLOCK_CODE_16,
+};
+
+const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
+{
+<span class="w"> </span>   .sampledelay = 5,
+<span class="gi">+   .wordSize = CY_PDM_PCM_WSIZE_24_BIT,  // &lt;-- update</span>
+<span class="w"> </span>   .signExtension = true,
+<span class="w"> </span>   .rxFifoTriggerLevel = 31,
+<span class="w"> </span>   .fir0_enable = true, // &lt;-- update
+<span class="gi">+    .fir0_decim_code = CY_PDM_PCM_CHAN_FIR0_DECIM_3, // &lt;-- update</span>
+<span class="w"> </span>   .fir0_scale = 16, // &lt;-- update
+#if (AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_16KHZ)
+<span class="gi">+    .cic_decim_code  = CY_PDM_PCM_CHAN_CIC_DECIM_16, // &lt;-- update</span>
+<span class="gi">+    .fir1_decim_code = CY_PDM_PCM_CHAN_FIR1_DECIM_2, // &lt;-- update</span>
+<span class="w"> </span>   .fir1_scale = 4, // &lt;-- update
+#elif(AUDIO_IN_SAMPLE_FREQ == AUDIO_SAMPLING_RATE_32KHZ)
+...
+#endif
+<span class="gi">+    .dc_block_disable = false,  // &lt;-- update</span>
+<span class="w"> </span>   .dc_block_code = CY_PDM_PCM_CHAN_DCBLOCK_CODE_16,
+};
+</code></pre></div>
+<p>Note that the DC blocking filter is enabled in this case. Because the effective PCM range is improved with the 24-bit configuration, the audio no longer clips at high gain values at the input of the DC blocking filter. Therefore, the DC blocking filter can remain enabled without the audio being nullified at higher gain values.</p>
+<ol start="5">
+<li>In the same <em>proj_cm33_ns/source/audio_in.c</em> file, update the <code>audio_gain_control_task()</code> function. Delete the lines highlighted in red, and add the lines in green</li>
+</ol>
+<div class="highlight"><pre><span></span><code>void audio_gain_control_task(void *arg)
+{
+<span class="w"> </span>   CY_UNUSED_PARAMETER(arg);
+<span class="gi">+   /** &lt;-- Delete lines corresponding to 16-bit configuration  --&gt; **/</span>
+<span class="gd">-   cy_en_pdm_pcm_gain_sel_t current_scale = CY_PDM_PCM_SEL_GAIN_5DB;</span>
+<span class="gd">-   /* Set initial gain */</span>
+<span class="gd">-   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, LEFT_CH_INDEX, current_scale);</span>
+<span class="gd">-   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, RIGHT_CH_INDEX, current_scale);</span>
+<span class="gd">-   printf(&quot;Gain: Scale Value = %d\r\n&quot;, current_scale);</span>
+
+<span class="w"> </span>   for (;;)
+<span class="w"> </span>   {
+<span class="w"> </span>       uint32_t num_available = 0;
+<span class="w"> </span>       /* Check if any characters are available in UART RX FIFO (non-blocking) */
+<span class="w"> </span>       num_available = Cy_SCB_UART_GetNumInRxFifo(CYBSP_DEBUG_UART_HW);
+<span class="w"> </span>       if (num_available &gt; 0)
+<span class="w"> </span>       {
+<span class="w"> </span>           /* Read character from UART */
+<span class="w"> </span>           uint32_t read_value = Cy_SCB_UART_Get(CYBSP_DEBUG_UART_HW);
+<span class="w"> </span>           if (read_value != CY_SCB_UART_RX_NO_DATA)
+<span class="w"> </span>           {
+<span class="w"> </span>               char received_char = (char)read_value;
+<span class="w"> </span>               bool gain_changed = false;
+<span class="w"> </span>               if (received_char == &#39;u&#39;)
+<span class="w"> </span>               {
+<span class="w"> </span>                   /* Increase gain */
+<span class="gi">+                   /** &lt;-- Modify routine --&gt;**/</span>
+<span class="gi">+                    if (sw_gain &lt; 40)</span>
+<span class="w"> </span>                   {
+<span class="gi">+                        sw_gain ++;</span>
+<span class="w"> </span>                       gain_changed = true;
+<span class="gi">+                    } /** &lt;-- End of modified routine --&gt;**/</span>
+<span class="w"> </span>                   else
+<span class="w"> </span>                   {
+<span class="w"> </span>                       printf(&quot;Already at maximum gain!\r\n&quot;);
+<span class="w"> </span>                   }
+<span class="w"> </span>               }
+<span class="w"> </span>               else if (received_char == &#39;d&#39;)
+<span class="w"> </span>               {
+<span class="w"> </span>                   /* Decrease gain */
+<span class="gi">+                   /** &lt;-- Modify routine --&gt;**/</span>
+<span class="gi">+                    if (sw_gain &gt; -40)</span>
+<span class="w"> </span>                   {
+<span class="gi">+                        sw_gain --;</span>
+<span class="w"> </span>                       gain_changed = true;
+<span class="gi">+                    } /** &lt;-- End of modified routine --&gt;**/</span>
+<span class="w"> </span>                   else
+<span class="w"> </span>                   {
+<span class="w"> </span>                       printf(&quot;Already at minimum gain!\r\n&quot;);
+<span class="w"> </span>                   }
+<span class="w"> </span>               }
+<span class="w"> </span>               if (gain_changed)
+<span class="w"> </span>               {
+<span class="gi">+                   /**&lt;-- Replace routine --&gt;**/ </span>
+<span class="gd">-                   /* Apply new gain to both channels */</span>
+<span class="gd">-                   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, LEFT_CH_INDEX, current_scale);</span>
+<span class="gd">-                   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, RIGHT_CH_INDEX, current_scale);</span>
+<span class="gd">-                   printf(&quot;Gain: Scale value = %d\r\n&quot;, current_scale);</span>
+<span class="gi">+                   printf(&quot;Gain: SW Gain value = %d\r\n&quot;, sw_gain);</span>
+<span class="gi">+                   /**&lt;-- End of replaced routine --&gt;**/</span>
+<span class="w"> </span>               }
+<span class="w"> </span>           }
+<span class="w"> </span>       }
+<span class="w"> </span>       /* Small delay to avoid busy-waiting and allow other tasks to run */
+<span class="w"> </span>       vTaskDelay(pdMS_TO_TICKS(100));
+<span class="w"> </span>   }
+}
+</code></pre></div>
+<ol start="6">
+<li>Update the <code>audio_in_init()</code> function to use the new 24-bit PDM configuration structure as shown in the following code</li>
+</ol>
+<div class="highlight"><pre><span></span><code>void audio_in_init(void)
+{
+<span class="w"> </span>   BaseType_t rtos_task_status;
+
+<span class="w"> </span>   /* Initialize PDM/PCM block */
+<span class="gi">+   /** Replace initialization routine **/</span>
+<span class="gi">+   cy_en_pdm_pcm_status_t status = Cy_PDM_PCM_Init(CYBSP_PDM_HW, &amp;CYBSP_PDM_config_24_bit);  </span>
+<span class="gi">+   /**&lt;-- End of replaced initialization routine --&gt;**/</span>
+<span class="w"> </span>   ...
+}
+</code></pre></div>
+<ol start="7">
+<li>The hardware now delivers 24-bit samples, but the USB stack still expects 16-bit samples. We must add the conversion step. We must call <code>Cy_PDM_PCM_ApplyPCM_Gain()</code> to apply software gain and convert the 24-bit data to 16-bit <strong>before</strong> passing it to the USB buffer. This function will take the 24-bit data from <code>pdm_interim_buffer</code>, apply a software gain, and write the 16-bit result back in the address pointed by the argument</li>
+</ol>
+<p>In the <code>audio_in_endpoint_callback()</code> function, apply the software gain and convert the 24-bit back to 16-bit using the <code>Cy_PDM_PCM_ApplyPCM_Gain()</code> API as shown in the below code.</p>
+<div class="highlight"><pre><span></span><code>void audio_in_endpoint_callback(void *pUserContext,
+<span class="w"> </span>                               const U8 **ppNextBuffer,
+<span class="w"> </span>                               U32 *pNextPacketSize)
+{
+<span class="w"> </span>   ...
+<span class="w"> </span>       /* Read audio data from PDM-PCM FIFO */
+<span class="w"> </span>       for(uint8_t i=0; i &lt; MAX_AUDIO_IN_PACKET_SIZE_WORDS; i++)
+<span class="w"> </span>       {
+<span class="w"> </span>           int32_t data = (int32_t) Cy_PDM_PCM_Channel_ReadFifo(CYBSP_PDM_HW, LEFT_CH_INDEX);
+<span class="gi">+           /** &lt;-- Add call --&gt; **/</span>
+<span class="gi">+           Cy_PDM_PCM_ApplyPCM_Gain(&amp;data, sw_gain, CY_PDM_PCM_16BIT, &amp;data); </span>
+<span class="gi">+           /** &lt;-- End of added call --&gt; **/</span>
+<span class="w"> </span>           #if AUDIO_DATA_INTERLEAVING
+<span class="w"> </span>           *(audio_in_pcm_buffer + i++) = (uint16_t) (data);
+<span class="w"> </span>           #else
+<span class="w"> </span>               audio_data_left[l] = (int16_t) (data);
+<span class="w"> </span>           #endif
+
+<span class="w"> </span>           data = (int32_t) Cy_PDM_PCM_Channel_ReadFifo(CYBSP_PDM_HW, RIGHT_CH_INDEX);
+<span class="gi">+           /** &lt;-- Add call --&gt; **/</span>
+<span class="gi">+           Cy_PDM_PCM_ApplyPCM_Gain(&amp;data, sw_gain, CY_PDM_PCM_16BIT, &amp;data);</span>
+<span class="gi">+           /** &lt;-- End of added call --&gt; **/</span>
+
+<span class="w"> </span>           #if AUDIO_DATA_INTERLEAVING
+<span class="w"> </span>           *(audio_in_pcm_buffer + i) = (uint16_t) (data);
+<span class="w"> </span>           #else
+<span class="w"> </span>               audio_data_right[l] = (int16_t) (data);
+<span class="w"> </span>           #endif
+<span class="w"> </span>   ...
+}
+</code></pre></div>
+<p>The software gain can be controlled using the <code>sw_gain</code> variable. This value needs to be set between -40 and +40 and it indicates the gain in dB scale.</p>
+<ol start="8">
+<li>Build and flash the modified application. With these changes, the software gain is now applied <strong>after</strong> the 24-bit sample is captured, avoiding the hardware clipping</li>
+</ol>
+<h3 id="verifying-the-extended-dynamic-range">Verifying the extended dynamic range<a class="headerlink" href="#verifying-the-extended-dynamic-range" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect to Tera Term and open Audacity</li>
+<li>Start recording in Audacity and play any continuous audio like a sine tone near the kit’s PDM microphones</li>
+<li>Increase the gain by pressing the <strong>"u"</strong> key and decrease it by pressing the <strong>"d"</strong> key</li>
+<li>This time, clipping is not observed until extremely large gain values, and the unusual one-channel clipping behavior is resolved while preserving audio information</li>
+</ol>
+<p><img src="assets/images/image_012.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h2 id="key-takeaways">Key takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Hardware components like microphones have physical limitations (for example, DC offset) that can significantly impact software performance and audio quality.</li>
+<li>Simply increasing the bit depth (16- to 24-bit) in the hardware peripheral is not a complete solution; the software pipeline <strong>must</strong> be adapted to handle the new, wider data format.</li>
+<li>Moving gain application from hardware (pre-decimation, as in <code>Cy_PDM_PCM_SetGain()</code>) to software (post-decimation, as in <code>Cy_PDM_PCM_ApplyPCM_Gain()</code>) is a key technique for maximizing usable dynamic range when DC offsets are present. The 24-bit intermediate data provides the necessary headroom to absorb the offset.</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>In this lab, we successfully identified a hardware-specific audio artifact (DC-offset-induced clipping) and then engineered a robust solution by reconfiguring the PDM-PCM peripheral for 24-bit capture, incorporating custom FIR filter coefficients, and modifying the software application to use a 24-bit intermediate buffer with software-based gain and conversion. This exercise demonstrates a complete, low-level audio engineering workflow on the PSOC&trade; Edge platform for high-quality audio when external factors like microphone DC offsets vary.</p>
+<h2 id="lab-2-hands-on-with-deepcrafttm-audio-enhancement">Lab 2: Hands-on with DEEPCRAFT&trade; Audio Enhancement<a class="headerlink" href="#lab-2-hands-on-with-deepcrafttm-audio-enhancement" title="Permanent link">&para;</a></h2>
+<h2 id="objective_1">Objective<a class="headerlink" href="#objective_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>To gain hands-on experience with the DEEPCRAFT&trade; Audio Enhancement (AE) pipeline on the PSOC&trade; Edge CM55 core.</li>
+<li>To use the DEEPCRAFT&trade; Audio Enhancement application in Functional mode to observe real-time noise suppression.</li>
+<li>To use the AFE Configurator tool in <strong>Tuning</strong> mode to dynamically modify AE parameters without recompiling.</li>
+<li>To learn two different methods for visualizing the multi-channel debug audio stream.</li>
+</ul>
+<h2 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h2>
+<p>This lab uses the DEEPCRAFT&trade; Audio Enhancement Application example, which runs a full, complex audio pipeline on the CM55 core. This pipeline includes PDM capture, DEEPCRAFT&trade; AE processing (with components like Noise Suppression and Acoustic Echo Cancellation), and USB audio streaming (UAC) in both directions.</p>
+<p>The lab is divided into three exercises:</p>
+<ol>
+<li><strong>Functional mode:</strong> The user will run the default <strong>Functional</strong> mode, play a noisy audio file, and use the onboard USER_BTN1 to toggle the AE noise suppression on and off, observing the result in real-time in Audacity</li>
+<li><strong>Tuning mode:</strong> The user will reconfigure the project for <strong>Tuning</strong> mode (CONFIG_AE_MODE=TUNING), connect the powerful AFE Configurator tool via UART, and learn to dynamically disable/enable AE components like <strong>Noise suppression</strong> without recompiling the firmware</li>
+<li><strong>Visualization:</strong> The user will learn to visualize the 4-channel debug audio stream available in 'Tuning' mode, using two distinct methods: 
+- Configuring Audacity for 4-channel WASAPI capture
+- Using the AFE Configurator's built-in recording tool</li>
+</ol>
+<h2 id="deepcrafttm-ae-pipeline">DEEPCRAFT&trade; AE pipeline<a class="headerlink" href="#deepcrafttm-ae-pipeline" title="Permanent link">&para;</a></h2>
+<h3 id="architecture-afe-configurator-afe-middleware-and-audio-voice-core">Architecture: AFE configurator, AFE middleware, and audio-voice-core<a class="headerlink" href="#architecture-afe-configurator-afe-middleware-and-audio-voice-core" title="Permanent link">&para;</a></h3>
+<p>The DEEPCRAFT&trade; Audio Enhancement solution is comprised of three main components:</p>
+<ul>
+<li><strong>AFE configurator:</strong> A PC-based GUI tool used to configure the entire audio processing pipeline. It generates static configuration files (for example, <code>cy_afe_configurator_settings.c</code>) that are compiled into the project. It also provides a real-time tuning interface that communicates with the target over UART.</li>
+<li><strong>AFE middleware:</strong> This is the firmware component that runs on the PSOC&trade; Edge (specifically the CM55 core). It is responsible for managing the flow of audio data from the PDM peripheral, feeding it to the audio-voice-core library, and sending the processed output to the USB peripheral.</li>
+<li><strong>Audio-voice-core library:</strong> This is a pre-compiled, licensed library from Infineon that contains the core, high-performance audio processing algorithms themselves (for example, Acoustic eho cancellation (AEC), Beamforming (BF), Noise suppression (NS), Dereverberation).</li>
+</ul>
+<h3 id="operational-modes-functional-vs-tuning">Operational modes: functional vs tuning<a class="headerlink" href="#operational-modes-functional-vs-tuning" title="Permanent link">&para;</a></h3>
+<p>The AE application example can be configured in one of two modes via the CONFIG_AE_MODE macro in the common.mk file:</p>
+<ul>
+<li><strong>FUNCTIONAL mode:</strong> This is the default mode, intended for demonstrating the final, deployed application. In this mode, the PSOC&trade; Edge device enumerates as a <strong>mono-channel</strong> USB microphone, streaming only the final processed audio. The USER_BTN1 is enabled to toggle processing ON and OFF.</li>
+<li><strong>TUNING mode:</strong> This mode is for development, debugging, and tuning. The device enumerates as a <strong>Quad-channel (4-channel)</strong> USB microphone. This allows the AFE Configurator tool to connect via UART and provides a multi-channel stream for debugging internal pipeline stages.</li>
+</ul>
+<h2 id="hardware-diagram">Hardware diagram<a class="headerlink" href="#hardware-diagram" title="Permanent link">&para;</a></h2>
+<p>The hardware setup for this lab requires two USB connections and a potential audio loop for full testing.</p>
+<ol>
+<li><strong>Host PC:</strong> Runs Audacity, Tera Term (or any other serial terminal), and the AFE Configurator</li>
+<li><strong>USB 1 (KitProg3):</strong> Connects to J8. Used for programming, debugging, and <strong>UART communication</strong> with the AFE Configurator</li>
+<li><strong>USB 2 (Device USB):</strong> Connects to J30. Used for <strong>UAC audio streaming</strong> (both in and out). See Figure 3 for the location of USB Device port on KIT_PSE84_EVAL</li>
+<li><strong>Audio Loop (for AEC):</strong> The PC's audio <em>output</em> is routed to the speakers (Audio Control) device. This plays audio <em>out</em> of the PSOC&trade; Edge E84 kit's onboard speaker. The PDM microphones capture this speaker audio, which is then cancelled by the AEC algorithm</li>
+</ol>
+<p>See <a href="#appendix-b-kit_pse84_eval-details">KIT_PSE84_EVAL details</a> for more information.</p>
+<h2 id="audio-data-flow_1">Audio data flow<a class="headerlink" href="#audio-data-flow_1" title="Permanent link">&para;</a></h2>
+<p>The data flow in the Audio Enhancement application is shown below.</p>
+<p><img src="assets/images/image_013.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h2 id="project-creation_1">Project creation<a class="headerlink" href="#project-creation_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Follow steps 1-4 in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a> to create a new application</li>
+<li>When creating the application, select the <strong>PSOC&trade; Edge DEEPCRAFT&trade; Audio Enhancement</strong> application under the <strong>Audio</strong> section</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> To prevent issues with Windows path length, it is recommended to rename the project if the workspace path is long.</p>
+</blockquote>
+<p><img src="assets/images/image_014.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>
+<p>[Info] Before building, ensure the LLVM compiler is installed. The lab also requires the <strong>DEEPCRAFT&trade; Audio Enhancement Tech Pack</strong> to be installed (via the ModusToolbox&trade; Setup tool). See <a href="#prerequisites">prerequisites</a> for more information</p>
+</li>
+<li>
+<p>Build and program the application. The project is in Functional mode by default</p>
+</li>
+</ol>
+<h2 id="exercise-1-real-time-noise-suppression-in-the-functional-mode">Exercise 1: Real-time Noise Suppression in the functional Mode<a class="headerlink" href="#exercise-1-real-time-noise-suppression-in-the-functional-mode" title="Permanent link">&para;</a></h2>
+<h3 id="hardware-and-software-setup">Hardware and software setup<a class="headerlink" href="#hardware-and-software-setup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect <strong>both</strong> USB cables: KitProg3 (J8) and Device USB (J30)</li>
+<li>On your Host PC, go to <em>Settings &gt; System &gt; Sound</em></li>
+<li>In the Output section, set your default audio device to <strong>Speakers (Audio Control)</strong>. This will route your PC's audio to the PSOC&trade; Edge E84 kit's speaker
+   In the Input section, you should see <strong>Microphone (Audio Control)</strong>. This is the audio from the PSOC&trade; Edge E84 kit.</li>
+</ol>
+<p><img src="assets/images/image_015.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Open Audacity. Set the Recording Device to <strong>Microphone (Audio Control)</strong> and Recording Channels to <strong>1 (Mono)</strong></li>
+</ol>
+<p><img src="assets/images/image_016.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="using-user_btn1-to-toggle-ae-processing">Using USER_BTN1 to Toggle AE processing<a class="headerlink" href="#using-user_btn1-to-toggle-ae-processing" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Start a source of background noise (for example, play a white noise video on your PC, which will now play from the E84 kit's speaker). You can also use the audio files provided in the <code>audio_test_data</code> folder as part of this lab's resources</li>
+<li>In Audacity, click <strong>Record</strong>. Speak into the PDM microphones</li>
+<li>Initially, the Blue LED on the kit will be ON. The recorded audio will be clean. The noise (playing from the PC) is largely removed by the Noise Suppression (NS) and Acoustic echo cancellation (AEC) components</li>
+</ol>
+<p><img src="assets/images/image_017.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Press <strong>USER_BTN1</strong> (the user button on the kit)</li>
+<li>The Blue LED will turn OFF. The audio recorded in Audacity will instantly become noisy, as you are now capturing the raw, unprocessed audio from the microphones</li>
+</ol>
+<p><img src="assets/images/image_018.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Press USER_BTN1 again. The Blue LED will turn ON, and the audio stream will become clean again. This demonstrates the real-time effect of the AFE middleware</li>
+</ol>
+<h2 id="exercise-2-real-time-tuning-with-afe-configurator">Exercise 2: Real-time tuning with AFE configurator<a class="headerlink" href="#exercise-2-real-time-tuning-with-afe-configurator" title="Permanent link">&para;</a></h2>
+<h3 id="switching-to-tuning-mode">Switching to tuning mode<a class="headerlink" href="#switching-to-tuning-mode" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In the ModusToolbox&trade; application, open the common.mk file from the root of the AE application project</li>
+<li>Find the line: <code>CONFIG_AE_MODE=FUNCTIONAL</code></li>
+<li>Change it to: <code>CONFIG_AE_MODE=TUNING</code></li>
+<li>Save the file, then build and re-program the board</li>
+<li>The device will now enumerate as a <strong>4-channel</strong> microphone</li>
+</ol>
+<h3 id="connecting-the-afe-configurator">Connecting the AFE configurator<a class="headerlink" href="#connecting-the-afe-configurator" title="Permanent link">&para;</a></h3>
+<p>This is a critical, multi-step process that must be followed precisely.</p>
+<ol>
+<li>Close Tera Term or any other serial terminal application. The AFE Configurator needs exclusive access to the KitProg3 UART port</li>
+<li>
+<p>Open the <strong>AFE Configurator</strong> tool from the Quick Panel, under proj_cm55 Library Configurators</p>
+<blockquote>
+<p><strong>Note</strong>: AFE Configurator is installed with the DEEPCRAFT&trade; Audio Enhancement Tech Pack mentioned in <a href="#prerequisites">prerequisites</a>.</p>
+</blockquote>
+</li>
+<li>
+<p>In the AFE Configurator, go to <strong>File &gt; Open</strong> and select the project's AFE configuration file: <em>proj_cm55/source/audio_enhancement_application/audio_enhancement/ae_configuration.mtbafe</em></p>
+</li>
+<li>Click the Connect icon in the toolbar (represented by a USB plug). When the  dialog appears, select the COM port corresponding to your <strong>KitProg3 USB-UART</strong> and click OK</li>
+</ol>
+<p><img src="assets/images/image_019.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Observe the status bar in the bottom-right corner. It should turn green and display <strong>Bridge status: connected</strong>. If it does not, ensure Tera Term is closed and you have the correct COM port</li>
+</ol>
+<p><img src="assets/images/image_020.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="dynamically-modifying-the-ae-pipeline">Dynamically modifying the AE pipeline<a class="headerlink" href="#dynamically-modifying-the-ae-pipeline" title="Permanent link">&para;</a></h3>
+<ol>
+<li>With the AFE Configurator connected and a noise source playing, open Audacity and start recording with Recording Channels set to '4'. See <a href="#method-a-4-channel-visualization-in-audacity">Method A: 4-Channel Visualization in Audacity</a> for details on setting up Audacity</li>
+<li>Listen to the main output channel</li>
+<li>In the AFE Configurator, on the left-hand pane, find the <strong>Noise Suppression</strong> component, and <strong>uncheck</strong> it</li>
+<li>Click the <strong>Sync filter settings</strong> button (two arrows button)</li>
+<li>A <strong>Sync Filter Parameters</strong> window will appear. Click the <strong>Load to device</strong> button</li>
+</ol>
+<p><img src="assets/images/image_021.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>You will immediately hear the background noise return in your Audacity recording. The AFE pipeline has been modified in real-time without recompiling</li>
+<li>Re-check the <strong>Enable noise suppression</strong> box and click <strong>Sync filter settings</strong> -&gt; <strong>Load to device</strong> again to verify the noise suppression returns</li>
+<li>Explore the other available dynamic parameters</li>
+</ol>
+<table>
+  <thead>
+    <tr>
+      <th>Filter type</th>
+      <th>Parameter name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Input</td>
+      <td>Hardware input gain (dB)</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Acoustic Echo Cancellation</td>
+      <td>Enable echo cancellation</td>
+    </tr>
+    <tr>
+      <td>Bulk delay (ms)</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Beam Forming</td>
+      <td>Enable beam forming</td>
+    </tr>
+    <tr>
+      <td>Interference canceller aggressiveness</td>
+    </tr>
+    <tr>
+      <td>Dereverberation</td>
+      <td>Enable dereverberation</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Echo Suppression</td>
+      <td>Enable echo suppression</td>
+    </tr>
+    <tr>
+      <td>Echo suppressor aggressiveness</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Noise Suppression</td>
+      <td>Enable noise suppression</td>
+    </tr>
+    <tr>
+      <td>Noise suppressor level (dB)</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Audio channels</td>
+      <td>Channel 0</td>
+    </tr>
+    <tr>
+      <td>Channel 1</td>
+    </tr>
+    <tr>
+      <td>Channel 2</td>
+    </tr>
+    <tr>
+      <td>Channel 3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="exercise-3-visualizing-the-ae-pipeline-channels">Exercise 3: Visualizing the AE pipeline channels<a class="headerlink" href="#exercise-3-visualizing-the-ae-pipeline-channels" title="Permanent link">&para;</a></h2>
+<p>This exercise uses the TUNING mode firmware from the previous step.</p>
+<h3 id="method-a-4-channel-visualization-in-audacity">Method A: 4-channel visualization in audacity<a class="headerlink" href="#method-a-4-channel-visualization-in-audacity" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Audacity</strong></li>
+<li>Go to <em>Edit &gt; Preferences &gt; Devices</em> (or click the Audio Settings button)</li>
+<li>Set the Host: to <strong>Windows WASAPI</strong>. This is essential for raw multi-channel capture</li>
+<li>Set the recording device to <strong>Microphone (2-Audio Control)</strong></li>
+<li>Set the recording channel to <strong>4</strong></li>
+</ol>
+<p><img src="assets/images/image_023.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>In the <strong>AFE Configurator</strong>, click the <strong>Connection Settings</strong> icon (a gear)</li>
+<li>In the <strong>USB audio input</strong> section, map the four channels to different debug signals. An example setup is as follows:
+   - Channel 0: Input (raw audio from left mic)
+   - Channel 1: Output (final processed audio)
+   - Channel 2: Input (raw audio from right mic)
+   - Channel 3: AEC Ref (the audio being played to the board for echo cancellation)</li>
+</ol>
+<p><img src="assets/images/image_024.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="8">
+<li>Click <strong>OK</strong> in the AFE Configurator. Click <strong>Record</strong> in Audacity</li>
+<li>Play music on your PC and speak into the microphones</li>
+<li>You will see four separate audio tracks being recorded simultaneously. You can now visually compare the raw, noisy input (tracks 1 and 3) to the clean, processed output (track 2) and see the AEC Ref (track 4) signal</li>
+</ol>
+<p><img src="assets/images/image_025.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="method-b-capturing-audio-with-afe-configurator">Method B: Capturing Audio with AFE Configurator<a class="headerlink" href="#method-b-capturing-audio-with-afe-configurator" title="Permanent link">&para;</a></h3>
+<p>This is an alternative workflow that uses the AFE Configurator's built-in recorder.</p>
+<ol>
+<li>Ensure you are in TUNING mode and the AFE Configurator is <strong>connected</strong></li>
+<li>In the AFE Configurator main window, click the <strong>Play</strong> icon (which acts as a <strong>Record</strong> button for the incoming stream). The tool will begin capturing the 4-channel data</li>
+</ol>
+<p><img src="assets/images/image_026.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Speak or play audio for 5-10 seconds</li>
+<li>Click the <strong>Stop</strong> icon</li>
+</ol>
+<p><img src="assets/images/image_027.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p>The 4-channel recording is shown in the AFE configurator.</p>
+<p><img src="assets/images/image_028.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Click the <strong>Save recording</strong> icon (floppy disk icon)</li>
+</ol>
+<p><img src="assets/images/image_029.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Save the capture as a .wav file (for example, <code>my_capture.wav</code>)</li>
+<li>Open Audacity. Drag and drop the saved <code>my_capture.wav</code> file into the Audacity window</li>
+<li>Audacity will import the file, showing all four captured channels</li>
+<li>Select a track, open the track menu, and select <strong>Spectrogram</strong> view. This allows you to visually compare the frequency content of the raw input versus the processed output, providing clear evidence of noise suppression</li>
+</ol>
+<h2 id="key-takeaways_1">Key takeaways<a class="headerlink" href="#key-takeaways_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The AE application demonstrates a sophisticated, dual-mode (FUNCTIONAL/TUNING) development workflow</li>
+<li>The AFE Configurator is a powerful tool for rapid, real-time tuning over UART, which dramatically accelerates development by avoiding the build/flash/test cycle</li>
+<li>TUNING mode's 4-channel USB Audio output is an essential debug feature, allowing direct, simultaneous comparison of raw microphone input (Input), final processed audio (Output), and internal pipeline signals (AEC Ref)</li>
+<li>Proper tool setup is critical for multi-channel analysis; for example, close Tera Term before using the AFE Configurator, and use the Windows WASAPI host in Audacity</li>
+</ul>
+<h2 id="conclusion_1">Conclusion<a class="headerlink" href="#conclusion_1" title="Permanent link">&para;</a></h2>
+<p>In this lab, we successfully operated the complete DEEPCRAFT&trade; Audio Enhancement pipeline. We used the <strong>Functional mode</strong> to demonstrate the end-user impact of AE processing. More importantly, we used the <strong>Tuning mode</strong> workflow to connect the AFE Configurator, dynamically modify the pipeline's behavior in real-time, and capture the internal multi-channel debug streams for detailed analysis in Audacity. This lab provides the foundational skills for tuning and debugging any audio application built on the DEEPCRAFT&trade; AE platform.</p>
+<h2 id="appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;<a class="headerlink" href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" title="Permanent link">&para;</a></h2>
+<p>The following steps show how to create a new project for PSOC&trade; Edge in ModusToolbox&trade;.</p>
+<ol>
+<li>Open the <strong>ModusToolbox&trade; Dashboard</strong> and launch the <strong>Eclipse IDE for ModusToolbox&trade;</strong></li>
+<li>If you have not installed ModusToolbox&trade; or Eclipse IDE, see Required development tools section</li>
+</ol>
+<p><img src="assets/images/image_030.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Choose a <strong>workspace directory</strong> for your project</li>
+</ol>
+<p>A folder is created if the workspace does not exist.</p>
+<p>After selecting a suitable directory, click the <strong>Launch</strong> button</p>
+<blockquote>
+<p><strong>Note:</strong> It is recommended to keep the workspace path short. Windows has a 260-character path length limit and a long workspace path may cause build issues when creating some applications</p>
+</blockquote>
+<p><img src="assets/images/image_031.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Select <strong>New Application</strong> from the Quick Panel. Alternatively, go to <strong>File &gt; New &gt; ModusToolbox&trade;</strong> application. This will launch the <strong>Project Creator Tool</strong></li>
+</ol>
+<p><img src="assets/images/image_032.png" alt="A screenshot of a computer program" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Once <strong>Project Creator</strong> launches, you will be prompted to select a board support package (BSP). Select the <strong>KIT_PSE84_EVAL_EPC2 BSP</strong> under the PSOC&trade; Edge BSPs and click <strong>Next</strong></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> BSPs are aligned with our development/evaluation kits; they provide files for basic device functionality. A BSP typically has a<em> </em>design.modus* file that configures clocks and other board-specific capabilities. That file is used by the ModusToolbox&trade; configurators. A BSP also includes the required device support code for the device on the board. You can modify the configuration to suit your application.</p>
+<p><strong>Note:</strong> Observe that ModusToolbox&trade; also includes BSPs for PSOC&trade; Edge EPC4 devices (<code>KIT_PSE84_EVAL_EPC4</code>), and for the PSOC&trade; Edge AI Kit (<code>KIT_PSE84_AI</code>). However, this training is intended to be used with the <code>KIT_PSE84_EVAL</code> which includes EPC2 devices by default.</p>
+</blockquote>
+<p><img src="assets/images/image_033.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>A new window opens to select an application. The Project Creator includes categories and a search field to make it easier to find and select different examples</li>
+</ol>
+<p>Click the <strong>checkbox</strong> near the application, optionally rename the project, and click <strong>Create</strong>.</p>
+<p>The figure below shows the creation of the <strong>PSOC&trade; Edge Hello World</strong> application under the <strong>Getting Started section</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
+</blockquote>
+<p><img src="assets/images/image_034.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>A new project is created, and you can see all the files in the Project Explorer window</li>
+</ol>
+<p><img src="assets/images/image_035.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<h2 id="appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details<a class="headerlink" href="#appendix-b-kit_pse84_eval-details" title="Permanent link">&para;</a></h2>
+<p><img src="assets/images/image_036.png" alt="A close-up of a circuit board" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Baseboard power LED (D1)</td>
+<td style="text-align: right;">26</td>
+<td>3-axis magnetometer (U4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>KitProg3 program/debug USB-C connector (J8)</td>
+<td style="text-align: right;">27</td>
+<td>Raspberry Pi-compatible display capacitive touch connector (J41)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>PSOC&trade; 5LP-based KitProg3 programmer and debugger (CY8C5868LTI-LP039, U2)</td>
+<td style="text-align: right;">28</td>
+<td>Linear potentiometer (R34)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Reset button (SW1)</td>
+<td style="text-align: right;">29</td>
+<td>Analog microphones (IM73A135V01XTSA1, U36 and U37)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>KitProg3 status LED (D2)</td>
+<td style="text-align: right;">30</td>
+<td>User LEDs (D3, D4, D5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>PSOC&trade; Edge E84 MCU ETM/JTAG debug and trace header (J15)</td>
+<td style="text-align: right;">31</td>
+<td>Thermistor (TH1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>PSOC&trade; Edge E84 MCU 10-pin SWD/JTAG program and debug header (J16)</td>
+<td style="text-align: right;">32</td>
+<td>CAPSENSE&trade; buttons and slider (CSB1, CSB2, CSS1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Alternative serial interface configuration headers (J20, J21)</td>
+<td style="text-align: right;">33</td>
+<td>BOOT configuration switch (SW6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>PSOC&trade; Edge E84 MCU USB host Type-A connector (J27)</td>
+<td style="text-align: right;">34</td>
+<td>Proximity sense connector (J19)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>USB-C power delivery (PD) fault LED (D6)</td>
+<td style="text-align: right;">35</td>
+<td>I/O headers compatible with Arduino UNO R3 (J2, J3, J4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Custom display capacitive touch panel connector (J37)**</td>
+<td style="text-align: right;">36</td>
+<td>Alternative serial interface I/O header (J14)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>PSOC&trade; Edge E84 MCU USB-C connector (J30)</td>
+<td style="text-align: right;">37</td>
+<td>Power header compatible with Arduino UNO R3 (J1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>External power supply VIN connector (J31)</td>
+<td style="text-align: right;">38</td>
+<td>PSOC&trade; Edge E84 MCU expansion I/O headers (J6, J7, J40)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>PSOC&trade; Edge E84 MCU user buttons (SW2, SW4)</td>
+<td style="text-align: right;">39</td>
+<td>MicroSD card holder (J35)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>M.2 (B-key) memory interface connector (J29)</td>
+<td style="text-align: right;">40</td>
+<td>Infineon's Shield2Go interface headers (J10, J12)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>128 Mbit Octal-SPI HYPERRAM&trade; (S70KS1283GABHI020, U12)***</td>
+<td style="text-align: right;">41</td>
+<td>PDM microphones (IM72D128V01XTMA1, U7 and U8)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Processor System on module (SoM) 260-pin SODIMM connector (J28)</td>
+<td style="text-align: right;">42</td>
+<td>mikroBUS compatible headers by Mikroelektronika (J9, J17)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>CYW55513 tri-band (Wi-Fi &amp; Bluetooth&reg;) combo radio (U3) section</td>
+<td style="text-align: right;">43</td>
+<td>Extended I2S header (J11)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>Processor System on module (SoM) power LED (D3)</td>
+<td style="text-align: right;">44</td>
+<td>6-axis accelerometer and gyroscope IMU (U5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>1-Gb Octal-SPI NOR flash (S28HS01GTGZBH1030, U10)***</td>
+<td style="text-align: right;">45</td>
+<td>M.2 (E-key) radio interface connector (J13)</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>128-Mb Quad-SPI NOR flash (S25FS128SAGMFB100, U11)</td>
+<td style="text-align: right;">46</td>
+<td>PSOC&trade; Edge E84 MCU power selection/monitoring headers (J18, J22, J23, J24, J25, J26)</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>MIPI-DSI custom display connector (J38)**</td>
+<td style="text-align: right;">47</td>
+<td>Headphone connector (J34)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>PSOC&trade; Edge E84 MCU (PSE846GPS2DBZC4A, U1)</td>
+<td style="text-align: right;">48</td>
+<td>Speaker (ACC6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>PSOC&trade; 4000T CAPSENSE&trade; Co-processor (U9)***</td>
+<td style="text-align: right;">49</td>
+<td>RJ45 Ethernet MagJack connector (J5)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Raspberry Pi-compatible MIPI-DSI display connector (J39)**</td>
+<td style="text-align: right;">50</td>
+<td>KitProg3 programming mode selection button (SW3)</td>
+</tr>
+</tbody>
+</table>
+<p>*Footprint only, not populated on the board</p>
+<p>**Component at the bottom side of the Baseboard</p>
+<p>***Component at the bottom side of the SoM</p>
+<h2 id="revision-history">Revision history<a class="headerlink" href="#revision-history" title="Permanent link">&para;</a></h2>
+<table class="no-center-table">
+    <thead>
+        <tr>
+            <th>Document revision</th>
+            <th>Date</th>
+            <th>Description of changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>**</td>
+            <td>2026-08-14</td>
+            <td>Initial release.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
+<p>All referenced product or service names and trademarks are the property of their respective owners.</p>
+<p>The Bluetooth&reg; word mark and logos are registered trademarks owned by Bluetooth SIG, Inc., and any use of such marks by Infineon is under license.</p>
+<p>PSOC&trade;, formerly known as PSoC&trade;, is a trademark of Infineon Technologies. Any references to PSoC&trade; in this document or others shall be deemed to refer to PSOC&trade;.</p>
+<hr />
+<p>© Cypress Semiconductor Corporation, 2023-2026. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress").  This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide.  Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights.  If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress's patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products.  Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
+<br>
+TO THE EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS DOCUMENT OR ANY SOFTWARE OR ACCOMPANYING HARDWARE, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  No computing device can be absolutely secure.  Therefore, despite security measures implemented in Cypress hardware or software products, Cypress shall have no liability arising out of any security breach, such as unauthorized access to or use of a Cypress product. CYPRESS DOES NOT REPRESENT, WARRANT, OR GUARANTEE THAT CYPRESS PRODUCTS, OR SYSTEMS CREATED USING CYPRESS PRODUCTS, WILL BE FREE FROM CORRUPTION, ATTACK, VIRUSES, INTERFERENCE, HACKING, DATA LOSS OR THEFT, OR OTHER SECURITY INTRUSION (collectively, "Security Breach").  Cypress disclaims any liability relating to any Security Breach, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any Security Breach.  In addition, the products described in these materials may contain design defects or errors known as errata which may cause the product to deviate from published specifications. To the extent permitted by applicable law, Cypress reserves the right to make changes to this document without further notice. Cypress does not assume any liability arising out of the application or use of any product or circuit described in this document. Any information provided in this document, including any sample design information or programming code, is provided only for reference purposes.  It is the responsibility of the user of this document to properly design, program, and test the functionality and safety of any application made of this information and any resulting product.  "High-Risk Device" means any device or system whose failure could cause personal injury, death, or property damage.  Examples of High-Risk Devices are weapons, nuclear installations, surgical implants, and other medical devices.  "Critical Component" means any component of a High-Risk Device whose failure to perform can be reasonably expected to cause, directly or indirectly, the failure of the High-Risk Device, or to affect its safety or effectiveness.  Cypress is not liable, in whole or in part, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any use of a Cypress product as a Critical Component in a High-Risk Device. You shall indemnify and hold Cypress, including its affiliates, and its directors, officers, employees, agents, distributors, and assigns harmless from and against all claims, costs, damages, and expenses, arising out of any claim, including claims for product liability, personal injury or death, or property damage arising from any use of a Cypress product as a Critical Component in a High-Risk Device. Cypress products are not intended or authorized for use as a Critical Component in any High-Risk Device except to the limited extent that (i) Cypress's published data sheet for the product explicitly states Cypress has qualified the product for use in a specific High-Risk Device, or (ii) Cypress has given you advance written authorization to use the product as a Critical Component in the specific High-Risk Device and you have signed a separate indemnification agreement.
+<br>
+Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.</p>
+<p><span id="lab-2-hands-on-with-deepcraft-audio-enhancement"></span></p>
+<p><span id="appendix-a-creating-a-psoc-edge-application-in-modustoolbox"></span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.footer", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
