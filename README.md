@@ -58,8 +58,8 @@ real-time audio enhancement and multi-channel pipeline visualization.
 - Training video at Infineon Academy (coming soon)
 - [Presentation](./Presentation/PSE_Advanced_Voice_Audio_Development.pdf)
 - [Training manual document](./Manual/pse-advanced-voice-audio-devel-training-manual.md)
-  - [Training manual web page](https://infineon.github.io/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio)
-- [Lab solutions](https://github.com/Infineon/mtb-training-psoc-edge-voice-audiomtb-training-psoc-edge-adv-voice-audio/tree/main/Lab_Source)
+  - [Training manual web page](https://infineon.github.io/mtb-training-psoc-edge-adv-voice-audio)
+- [Lab solutions](https://github.com/Infineon/mtb-training-psoc-edge-adv-voice-audio/tree/main/Lab_Source)
 
 ## References and resources
 - [PSOC™ Edge MCUs](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm)
