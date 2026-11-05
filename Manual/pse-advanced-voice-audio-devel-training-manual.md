@@ -101,7 +101,7 @@ For PSOC&trade; Edge trainings, from beginner tutorials to advanced trainings, g
 This exercise begins with the default configuration of the USB audio recorder code example, which operates in a 16-bit word size configuration. This code example uses PDM microphones to capture the audio data and stream it over USB to a PC using the USB audio device class. An audio recorder software tool, such as **Audacity**, running on a computer initiates the recording and streaming of audio data. By default, the application is configured to sample stereo audio at 16 kHz sampling rate with 16-bit PCM bit-depth. The sample audio data is eventually transferred to the USB data endpoint buffer.
 
 
-<img src="assets/images/image_001.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;"/>
+<img src="assets/images/image_001.png" alt="Figure" style="width:813px; max-width:100%; height:auto; display:block; margin:0 auto;"/>
 
 The following are the steps:
 
@@ -150,7 +150,7 @@ The data flow for the initial 16-bit configuration is as follows:
 
 > **Note:** To prevent issues with Windows path length, it is recommended to rename the project if your workspace path is long.
 
-<img src="assets/images/image_002.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_002.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 3. Once created, build and program the application
@@ -161,21 +161,21 @@ The data flow for the initial 16-bit configuration is as follows:
 
 1. Connect the first USB cable from your PC to the **KitProg3 USB connector (J8)** and the second USB cable to the **Device USB connector (J30)** of the evaluation kit as shown in the following figure
 
-<img src="assets/images/image_003.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_003.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 2. Open **Tera Term** or any other serial terminal program and connect to the KitProg3 COM port. Use serial settings **115200** baud, and **8N1**
 3. The terminal will display the message **PSOC Edge MCU: Audio recorder using emUSB-device**
 4. Verify that Windows has successfully enumerated the device. In *Control Panel > Sound*, you should see a new recording device named **Audio Control**
 
-<img src="assets/images/image_004.png" alt="A screenshot of a computer" style="width:420px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_004.png" alt="A screenshot of a computer" style="width:465px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 5. Open **Audacity**
 6. In the device toolbar, set the Audio Host to **MME**, the recording device to **Microphone (Audio Control)**, and the recording channels to **2 (Stereo)**.  
 > **Note:** Click *View -> Toolbars -> Device Toolbar* if the toolbar is not enabled by default
 
-<img src="assets/images/image_005.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_005.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 7. Click the **Record** button. Speak into the microphones (located on the upper right corner of the kit as shown in [KIT_PSE84_EVAL details](#appendix-b-kit_pse84_eval-details)) and verify that you see a stereo waveform being captured
@@ -360,7 +360,7 @@ void audio_in_init(void)
 4. Observe the Audacity waveform and notice the audio amplitude for the gain value you set in the code. The default value for gain in scale is 13 that maps to 5 dB
 5. Increase the gain by pressing the **"u"** key in the serial terminal. Observe the message **Gain: Scale value = 12**, indicating that the scale value has decreased and the gain has increased
 
-<img src="assets/images/image_007.png" alt="A screen shot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_007.png" alt="A screen shot of a computer" style="width:854px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 You can also observe the audio amplitude increase in the audio recording on Audacity. Repeat this step for other gain values.
@@ -369,7 +369,7 @@ Additionally, you can decrease the gain by pressing the **"d"** key.
 
 6. Notice that as the scale value decreases below ~7-9 (29 dB – 41 dB), the top waveform begins to flatten at the top. This is audio clipping. The bottom waveform will likely still have headroom. This is indicated in the below figure
 
-<img src="assets/images/image_008.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_008.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 7. Due to audio clipping, the audio signal will be unusable for any application. The exact clipping thresholds may vary depending on the audio source and the distance between the source and the microphones. However, with the 16-bit configuration, clipping occurs prematurely, especially on one of the channels. This confirms the behavior described in the technical background
 
@@ -393,7 +393,7 @@ This application overrides these changes in code because we will modify source c
 | PDM Config - User Configure FIR0 | Enable |
 | PDM Config - User Configure FIR1 | Enable |
 
-<img src="assets/images/image_009.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_009.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 2. Add the FIR coefficients
 
@@ -627,7 +627,7 @@ The software gain can be controlled using the `sw_gain` variable. This value nee
 3. Increase the gain by pressing the **"u"** key and decrease it by pressing the **"d"** key
 4. This time, clipping is not observed until extremely large gain values, and the unusual one-channel clipping behavior is resolved while preserving audio information
 
-<img src="assets/images/image_012.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_012.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 ## Key takeaways
@@ -694,7 +694,7 @@ See [KIT_PSE84_EVAL details](#appendix-b-kit_pse84_eval-details) for more inform
 
 The data flow in the Audio Enhancement application is shown below.
 
-<img src="assets/images/image_013.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_013.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 ## Project creation
 
@@ -703,7 +703,7 @@ The data flow in the Audio Enhancement application is shown below.
 
 > **Note:** To prevent issues with Windows path length, it is recommended to rename the project if the workspace path is long.
 
-<img src="assets/images/image_014.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_014.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 3. [Info] Before building, ensure the LLVM compiler is installed. The lab also requires the **DEEPCRAFT&trade; Audio Enhancement Tech Pack** to be installed (via the ModusToolbox&trade; Setup tool). See [prerequisites](#prerequisites) for more information
@@ -719,12 +719,12 @@ The data flow in the Audio Enhancement application is shown below.
 3. In the Output section, set your default audio device to **Speakers (Audio Control)**. This will route your PC's audio to the PSOC&trade; Edge E84 kit's speaker
    In the Input section, you should see **Microphone (Audio Control)**. This is the audio from the PSOC&trade; Edge E84 kit.
    
-<img src="assets/images/image_015.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_015.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 4. Open Audacity. Set the Recording Device to **Microphone (Audio Control)** and Recording Channels to **1 (Mono)**
 
-<img src="assets/images/image_016.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_016.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 ### Using USER_BTN1 to Toggle AE processing
@@ -733,13 +733,13 @@ The data flow in the Audio Enhancement application is shown below.
 2. In Audacity, click **Record**. Speak into the PDM microphones
 3. Initially, the Blue LED on the kit will be ON. The recorded audio will be clean. The noise (playing from the PC) is largely removed by the Noise Suppression (NS) and Acoustic echo cancellation (AEC) components
 
-<img src="assets/images/image_017.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_017.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 4. Press **USER_BTN1** (the user button on the kit)
 5. The Blue LED will turn OFF. The audio recorded in Audacity will instantly become noisy, as you are now capturing the raw, unprocessed audio from the microphones
 
-<img src="assets/images/image_018.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_018.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 6. Press USER_BTN1 again. The Blue LED will turn ON, and the audio stream will become clean again. This demonstrates the real-time effect of the AFE middleware
@@ -765,12 +765,12 @@ This is a critical, multi-step process that must be followed precisely.
 3. In the AFE Configurator, go to **File > Open** and select the project's AFE configuration file: *proj_cm55/source/audio_enhancement_application/audio_enhancement/ae_configuration.mtbafe*
 4. Click the Connect icon in the toolbar (represented by a USB plug). When the  dialog appears, select the COM port corresponding to your **KitProg3 USB-UART** and click OK
 
-<img src="assets/images/image_019.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_019.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 5. Observe the status bar in the bottom-right corner. It should turn green and display **Bridge status: connected**. If it does not, ensure Tera Term is closed and you have the correct COM port
 
-<img src="assets/images/image_020.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_020.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 ### Dynamically modifying the AE pipeline
@@ -781,7 +781,7 @@ This is a critical, multi-step process that must be followed precisely.
 4. Click the **Sync filter settings** button (two arrows button)
 5. A **Sync Filter Parameters** window will appear. Click the **Load to device** button
 
-<img src="assets/images/image_021.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_021.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 6. You will immediately hear the background noise return in your Audacity recording. The AFE pipeline has been modified in real-time without recompiling
@@ -861,7 +861,7 @@ This exercise uses the TUNING mode firmware from the previous step.
 4. Set the recording device to **Microphone (2-Audio Control)**
 5. Set the recording channel to **4**
 
-<img src="assets/images/image_023.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_023.png" alt="Figure" style="width:729px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 6. In the **AFE Configurator**, click the **Connection Settings** icon (a gear)
@@ -871,14 +871,14 @@ This exercise uses the TUNING mode firmware from the previous step.
    - Channel 2: Input (raw audio from right mic)
    - Channel 3: AEC Ref (the audio being played to the board for echo cancellation)
 
-<img src="assets/images/image_024.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_024.png" alt="Figure" style="width:665px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 8. Click **OK** in the AFE Configurator. Click **Record** in Audacity
 9. Play music on your PC and speak into the microphones
 10. You will see four separate audio tracks being recorded simultaneously. You can now visually compare the raw, noisy input (tracks 1 and 3) to the clean, processed output (track 2) and see the AEC Ref (track 4) signal
 
-<img src="assets/images/image_025.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_025.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 ### Method B: Capturing Audio with AFE Configurator
@@ -888,23 +888,23 @@ This is an alternative workflow that uses the AFE Configurator's built-in record
 1. Ensure you are in TUNING mode and the AFE Configurator is **connected**
 2. In the AFE Configurator main window, click the **Play** icon (which acts as a **Record** button for the incoming stream). The tool will begin capturing the 4-channel data
 
-<img src="assets/images/image_026.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_026.png" alt="Figure" style="width:842px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 3. Speak or play audio for 5-10 seconds
 4. Click the **Stop** icon
 
-<img src="assets/images/image_027.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_027.png" alt="Figure" style="width:817px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 The 4-channel recording is shown in the AFE configurator.
 
-<img src="assets/images/image_028.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_028.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 5. Click the **Save recording** icon (floppy disk icon)
 
-<img src="assets/images/image_029.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_029.png" alt="Figure" style="width:838px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 6. Save the capture as a .wav file (for example, `my_capture.wav`)
@@ -930,7 +930,7 @@ The following steps show how to create a new project for PSOC&trade; Edge in Mod
 1. Open the **ModusToolbox&trade; Dashboard** and launch the **Eclipse IDE for ModusToolbox&trade;**
 2. If you have not installed ModusToolbox&trade; or Eclipse IDE, see Required development tools section
 
-<img src="assets/images/image_030.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_030.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 3. Choose a **workspace directory** for your project
@@ -941,12 +941,12 @@ After selecting a suitable directory, click the **Launch** button
 
 > **Note:** It is recommended to keep the workspace path short. Windows has a 260-character path length limit and a long workspace path may cause build issues when creating some applications
 
-<img src="assets/images/image_031.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_031.png" alt="A screenshot of a computer" style="width:832px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 4. Select **New Application** from the Quick Panel. Alternatively, go to **File > New > ModusToolbox&trade;** application. This will launch the **Project Creator Tool**
 
-<img src="assets/images/image_032.png" alt="A screenshot of a computer program" style="width:420px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_032.png" alt="A screenshot of a computer program" style="width:511px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 5. Once **Project Creator** launches, you will be prompted to select a board support package (BSP). Select the **KIT_PSE84_EVAL_EPC2 BSP** under the PSOC&trade; Edge BSPs and click **Next**
@@ -955,7 +955,7 @@ After selecting a suitable directory, click the **Launch** button
 
 > **Note:** Observe that ModusToolbox&trade; also includes BSPs for PSOC&trade; Edge EPC4 devices (`KIT_PSE84_EVAL_EPC4`), and for the PSOC&trade; Edge AI Kit (`KIT_PSE84_AI`). However, this training is intended to be used with the `KIT_PSE84_EVAL` which includes EPC2 devices by default.
 
-<img src="assets/images/image_033.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_033.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 6. A new window opens to select an application. The Project Creator includes categories and a search field to make it easier to find and select different examples
@@ -966,17 +966,17 @@ The figure below shows the creation of the **PSOC&trade; Edge Hello World** appl
 
 > **Note:** Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.
 
-<img src="assets/images/image_034.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_034.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 7. A new project is created, and you can see all the files in the Project Explorer window
 
-<img src="assets/images/image_035.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_035.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 ## Appendix B: KIT_PSE84_EVAL details
 
-<img src="assets/images/image_036.png" alt="A close-up of a circuit board" style="width:500px; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_036.png" alt="A close-up of a circuit board" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" />
 
 
 | No. | Item | No. | Item |

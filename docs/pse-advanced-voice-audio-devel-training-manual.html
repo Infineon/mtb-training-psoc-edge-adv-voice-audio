@@ -797,7 +797,7 @@
 </ul>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>This exercise begins with the default configuration of the USB audio recorder code example, which operates in a 16-bit word size configuration. This code example uses PDM microphones to capture the audio data and stream it over USB to a PC using the USB audio device class. An audio recorder software tool, such as <strong>Audacity</strong>, running on a computer initiates the recording and streaming of audio data. By default, the application is configured to sample stereo audio at 16 kHz sampling rate with 16-bit PCM bit-depth. The sample audio data is eventually transferred to the USB data endpoint buffer.</p>
-<p><img src="assets/images/image_001.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;"/></p>
+<p><img src="assets/images/image_001.png" alt="Figure" style="width:813px; max-width:100%; height:auto; display:block; margin:0 auto;"/></p>
 <p>The following are the steps:</p>
 <ol>
 <li>
@@ -835,7 +835,7 @@
 <blockquote>
 <p><strong>Note:</strong> To prevent issues with Windows path length, it is recommended to rename the project if your workspace path is long.</p>
 </blockquote>
-<p><img src="assets/images/image_002.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_002.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="3">
 <li>Once created, build and program the application</li>
 </ol>
@@ -844,13 +844,13 @@
 <ol>
 <li>Connect the first USB cable from your PC to the <strong>KitProg3 USB connector (J8)</strong> and the second USB cable to the <strong>Device USB connector (J30)</strong> of the evaluation kit as shown in the following figure</li>
 </ol>
-<p><img src="assets/images/image_003.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_003.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="2">
 <li>Open <strong>Tera Term</strong> or any other serial terminal program and connect to the KitProg3 COM port. Use serial settings <strong>115200</strong> baud, and <strong>8N1</strong></li>
 <li>The terminal will display the message <strong>PSOC Edge MCU: Audio recorder using emUSB-device</strong></li>
 <li>Verify that Windows has successfully enumerated the device. In <em>Control Panel &gt; Sound</em>, you should see a new recording device named <strong>Audio Control</strong></li>
 </ol>
-<p><img src="assets/images/image_004.png" alt="A screenshot of a computer" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_004.png" alt="A screenshot of a computer" style="width:465px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="5">
 <li>Open <strong>Audacity</strong></li>
 <li>In the device toolbar, set the Audio Host to <strong>MME</strong>, the recording device to <strong>Microphone (Audio Control)</strong>, and the recording channels to <strong>2 (Stereo)</strong>.  <blockquote>
@@ -858,7 +858,7 @@
 </blockquote>
 </li>
 </ol>
-<p><img src="assets/images/image_005.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_005.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="7">
 <li>Click the <strong>Record</strong> button. Speak into the microphones (located on the upper right corner of the kit as shown in <a href="#appendix-b-kit_pse84_eval-details">KIT_PSE84_EVAL details</a>) and verify that you see a stereo waveform being captured</li>
 </ol>
@@ -1176,13 +1176,13 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>Observe the Audacity waveform and notice the audio amplitude for the gain value you set in the code. The default value for gain in scale is 13 that maps to 5 dB</li>
 <li>Increase the gain by pressing the <strong>"u"</strong> key in the serial terminal. Observe the message <strong>Gain: Scale value = 12</strong>, indicating that the scale value has decreased and the gain has increased</li>
 </ol>
-<p><img src="assets/images/image_007.png" alt="A screen shot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_007.png" alt="A screen shot of a computer" style="width:854px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <p>You can also observe the audio amplitude increase in the audio recording on Audacity. Repeat this step for other gain values.</p>
 <p>Additionally, you can decrease the gain by pressing the <strong>"d"</strong> key.</p>
 <ol start="6">
 <li>Notice that as the scale value decreases below ~7-9 (29 dB – 41 dB), the top waveform begins to flatten at the top. This is audio clipping. The bottom waveform will likely still have headroom. This is indicated in the below figure</li>
 </ol>
-<p><img src="assets/images/image_008.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_008.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="7">
 <li>Due to audio clipping, the audio signal will be unusable for any application. The exact clipping thresholds may vary depending on the audio source and the distance between the source and the microphones. However, with the 16-bit configuration, clipping occurs prematurely, especially on one of the channels. This confirms the behavior described in the technical background</li>
 </ol>
@@ -1228,7 +1228,7 @@ This application overrides these changes in code because we will modify source c
 </tr>
 </tbody>
 </table>
-<p><img src="assets/images/image_009.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_009.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="2">
 <li>Add the FIR coefficients</li>
 </ol>
@@ -1533,7 +1533,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>Increase the gain by pressing the <strong>"u"</strong> key and decrease it by pressing the <strong>"d"</strong> key</li>
 <li>This time, clipping is not observed until extremely large gain values, and the unusual one-channel clipping behavior is resolved while preserving audio information</li>
 </ol>
-<p><img src="assets/images/image_012.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_012.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h2 id="key-takeaways">Key takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Hardware components like microphones have physical limitations (for example, DC offset) that can significantly impact software performance and audio quality.</li>
@@ -1585,7 +1585,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <p>See <a href="#appendix-b-kit_pse84_eval-details">KIT_PSE84_EVAL details</a> for more information.</p>
 <h2 id="audio-data-flow_1">Audio data flow<a class="headerlink" href="#audio-data-flow_1" title="Permanent link">&para;</a></h2>
 <p>The data flow in the Audio Enhancement application is shown below.</p>
-<p><img src="assets/images/image_013.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_013.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h2 id="project-creation_1">Project creation<a class="headerlink" href="#project-creation_1" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Follow steps 1-4 in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a> to create a new application</li>
@@ -1594,7 +1594,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <blockquote>
 <p><strong>Note:</strong> To prevent issues with Windows path length, it is recommended to rename the project if the workspace path is long.</p>
 </blockquote>
-<p><img src="assets/images/image_014.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_014.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="3">
 <li>
 <p>[Info] Before building, ensure the LLVM compiler is installed. The lab also requires the <strong>DEEPCRAFT&trade; Audio Enhancement Tech Pack</strong> to be installed (via the ModusToolbox&trade; Setup tool). See <a href="#prerequisites">prerequisites</a> for more information</p>
@@ -1611,23 +1611,23 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>In the Output section, set your default audio device to <strong>Speakers (Audio Control)</strong>. This will route your PC's audio to the PSOC&trade; Edge E84 kit's speaker
    In the Input section, you should see <strong>Microphone (Audio Control)</strong>. This is the audio from the PSOC&trade; Edge E84 kit.</li>
 </ol>
-<p><img src="assets/images/image_015.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_015.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="4">
 <li>Open Audacity. Set the Recording Device to <strong>Microphone (Audio Control)</strong> and Recording Channels to <strong>1 (Mono)</strong></li>
 </ol>
-<p><img src="assets/images/image_016.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_016.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h3 id="using-user_btn1-to-toggle-ae-processing">Using USER_BTN1 to Toggle AE processing<a class="headerlink" href="#using-user_btn1-to-toggle-ae-processing" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Start a source of background noise (for example, play a white noise video on your PC, which will now play from the E84 kit's speaker). You can also use the audio files provided in the <code>audio_test_data</code> folder as part of this lab's resources</li>
 <li>In Audacity, click <strong>Record</strong>. Speak into the PDM microphones</li>
 <li>Initially, the Blue LED on the kit will be ON. The recorded audio will be clean. The noise (playing from the PC) is largely removed by the Noise Suppression (NS) and Acoustic echo cancellation (AEC) components</li>
 </ol>
-<p><img src="assets/images/image_017.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_017.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="4">
 <li>Press <strong>USER_BTN1</strong> (the user button on the kit)</li>
 <li>The Blue LED will turn OFF. The audio recorded in Audacity will instantly become noisy, as you are now capturing the raw, unprocessed audio from the microphones</li>
 </ol>
-<p><img src="assets/images/image_018.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_018.png" alt="Figure" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="6">
 <li>Press USER_BTN1 again. The Blue LED will turn ON, and the audio stream will become clean again. This demonstrates the real-time effect of the AFE middleware</li>
 </ol>
@@ -1655,11 +1655,11 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 </li>
 <li>Click the Connect icon in the toolbar (represented by a USB plug). When the  dialog appears, select the COM port corresponding to your <strong>KitProg3 USB-UART</strong> and click OK</li>
 </ol>
-<p><img src="assets/images/image_019.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_019.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="5">
 <li>Observe the status bar in the bottom-right corner. It should turn green and display <strong>Bridge status: connected</strong>. If it does not, ensure Tera Term is closed and you have the correct COM port</li>
 </ol>
-<p><img src="assets/images/image_020.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_020.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h3 id="dynamically-modifying-the-ae-pipeline">Dynamically modifying the AE pipeline<a class="headerlink" href="#dynamically-modifying-the-ae-pipeline" title="Permanent link">&para;</a></h3>
 <ol>
 <li>With the AFE Configurator connected and a noise source playing, open Audacity and start recording with Recording Channels set to '4'. See <a href="#method-a-4-channel-visualization-in-audacity">Method A: 4-Channel Visualization in Audacity</a> for details on setting up Audacity</li>
@@ -1668,7 +1668,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>Click the <strong>Sync filter settings</strong> button (two arrows button)</li>
 <li>A <strong>Sync Filter Parameters</strong> window will appear. Click the <strong>Load to device</strong> button</li>
 </ol>
-<p><img src="assets/images/image_021.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_021.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="6">
 <li>You will immediately hear the background noise return in your Audacity recording. The AFE pipeline has been modified in real-time without recompiling</li>
 <li>Re-check the <strong>Enable noise suppression</strong> box and click <strong>Sync filter settings</strong> -&gt; <strong>Load to device</strong> again to verify the noise suppression returns</li>
@@ -1744,7 +1744,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>Set the recording device to <strong>Microphone (2-Audio Control)</strong></li>
 <li>Set the recording channel to <strong>4</strong></li>
 </ol>
-<p><img src="assets/images/image_023.png" alt="Figure" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_023.png" alt="Figure" style="width:729px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="6">
 <li>In the <strong>AFE Configurator</strong>, click the <strong>Connection Settings</strong> icon (a gear)</li>
 <li>In the <strong>USB audio input</strong> section, map the four channels to different debug signals. An example setup is as follows:
@@ -1753,31 +1753,31 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
    - Channel 2: Input (raw audio from right mic)
    - Channel 3: AEC Ref (the audio being played to the board for echo cancellation)</li>
 </ol>
-<p><img src="assets/images/image_024.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_024.png" alt="Figure" style="width:665px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="8">
 <li>Click <strong>OK</strong> in the AFE Configurator. Click <strong>Record</strong> in Audacity</li>
 <li>Play music on your PC and speak into the microphones</li>
 <li>You will see four separate audio tracks being recorded simultaneously. You can now visually compare the raw, noisy input (tracks 1 and 3) to the clean, processed output (track 2) and see the AEC Ref (track 4) signal</li>
 </ol>
-<p><img src="assets/images/image_025.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_025.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h3 id="method-b-capturing-audio-with-afe-configurator">Method B: Capturing Audio with AFE Configurator<a class="headerlink" href="#method-b-capturing-audio-with-afe-configurator" title="Permanent link">&para;</a></h3>
 <p>This is an alternative workflow that uses the AFE Configurator's built-in recorder.</p>
 <ol>
 <li>Ensure you are in TUNING mode and the AFE Configurator is <strong>connected</strong></li>
 <li>In the AFE Configurator main window, click the <strong>Play</strong> icon (which acts as a <strong>Record</strong> button for the incoming stream). The tool will begin capturing the 4-channel data</li>
 </ol>
-<p><img src="assets/images/image_026.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_026.png" alt="Figure" style="width:842px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="3">
 <li>Speak or play audio for 5-10 seconds</li>
 <li>Click the <strong>Stop</strong> icon</li>
 </ol>
-<p><img src="assets/images/image_027.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_027.png" alt="Figure" style="width:817px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <p>The 4-channel recording is shown in the AFE configurator.</p>
-<p><img src="assets/images/image_028.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_028.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="5">
 <li>Click the <strong>Save recording</strong> icon (floppy disk icon)</li>
 </ol>
-<p><img src="assets/images/image_029.png" alt="Figure" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_029.png" alt="Figure" style="width:838px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="6">
 <li>Save the capture as a .wav file (for example, <code>my_capture.wav</code>)</li>
 <li>Open Audacity. Drag and drop the saved <code>my_capture.wav</code> file into the Audacity window</li>
@@ -1799,7 +1799,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <li>Open the <strong>ModusToolbox&trade; Dashboard</strong> and launch the <strong>Eclipse IDE for ModusToolbox&trade;</strong></li>
 <li>If you have not installed ModusToolbox&trade; or Eclipse IDE, see Required development tools section</li>
 </ol>
-<p><img src="assets/images/image_030.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_030.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="3">
 <li>Choose a <strong>workspace directory</strong> for your project</li>
 </ol>
@@ -1808,11 +1808,11 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <blockquote>
 <p><strong>Note:</strong> It is recommended to keep the workspace path short. Windows has a 260-character path length limit and a long workspace path may cause build issues when creating some applications</p>
 </blockquote>
-<p><img src="assets/images/image_031.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_031.png" alt="A screenshot of a computer" style="width:832px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="4">
 <li>Select <strong>New Application</strong> from the Quick Panel. Alternatively, go to <strong>File &gt; New &gt; ModusToolbox&trade;</strong> application. This will launch the <strong>Project Creator Tool</strong></li>
 </ol>
-<p><img src="assets/images/image_032.png" alt="A screenshot of a computer program" style="width:420px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_032.png" alt="A screenshot of a computer program" style="width:511px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="5">
 <li>Once <strong>Project Creator</strong> launches, you will be prompted to select a board support package (BSP). Select the <strong>KIT_PSE84_EVAL_EPC2 BSP</strong> under the PSOC&trade; Edge BSPs and click <strong>Next</strong></li>
 </ol>
@@ -1820,7 +1820,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <p><strong>Note:</strong> BSPs are aligned with our development/evaluation kits; they provide files for basic device functionality. A BSP typically has a<em> </em>design.modus* file that configures clocks and other board-specific capabilities. That file is used by the ModusToolbox&trade; configurators. A BSP also includes the required device support code for the device on the board. You can modify the configuration to suit your application.</p>
 <p><strong>Note:</strong> Observe that ModusToolbox&trade; also includes BSPs for PSOC&trade; Edge EPC4 devices (<code>KIT_PSE84_EVAL_EPC4</code>), and for the PSOC&trade; Edge AI Kit (<code>KIT_PSE84_AI</code>). However, this training is intended to be used with the <code>KIT_PSE84_EVAL</code> which includes EPC2 devices by default.</p>
 </blockquote>
-<p><img src="assets/images/image_033.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_033.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="6">
 <li>A new window opens to select an application. The Project Creator includes categories and a search field to make it easier to find and select different examples</li>
 </ol>
@@ -1829,13 +1829,13 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <blockquote>
 <p><strong>Note:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
 </blockquote>
-<p><img src="assets/images/image_034.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_034.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <ol start="7">
 <li>A new project is created, and you can see all the files in the Project Explorer window</li>
 </ol>
-<p><img src="assets/images/image_035.png" alt="A screenshot of a computer" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_035.png" alt="A screenshot of a computer" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <h2 id="appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details<a class="headerlink" href="#appendix-b-kit_pse84_eval-details" title="Permanent link">&para;</a></h2>
-<p><img src="assets/images/image_036.png" alt="A close-up of a circuit board" style="width:500px; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_036.png" alt="A close-up of a circuit board" style="width:900px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
 <table>
 <thead>
 <tr>
