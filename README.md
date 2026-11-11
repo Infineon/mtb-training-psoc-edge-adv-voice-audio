@@ -21,8 +21,8 @@ real-time audio enhancement and multi-channel pipeline visualization.
 ## Prerequisites
 ### Recommended trainings
 - This training does not cover foundational concepts of ModusToolbox™ and PSOC™ Edge.
-- For an introduction to PSOC™ MCUs, including getting-started guides for ModusToolbox™, see the [PSOC™ Developer Journey](https://www.infineon.com/PSOCdeveloper).
-- For PSOC™ Edge trainings, from beginner tutorials to advanced sessions, visit the [PSOC™ Edge E84 Training Collection](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd).
+- For an introduction to PSOC™ MCUs, including getting-started guides for ModusToolbox™, see the [PSOC™ Developer Journey](https://www.infineon.com/psocdeveloper).
+- For PSOC™ Edge trainings, from beginner tutorials to advanced sessions, visit the [PSOC™ Edge training collection at Infineon Academy](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd).
 
 ### Tools (see [training manual](#content) for versions and installation instructions)
 - [ModusToolbox™ with Eclipse IDE](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup)
@@ -61,10 +61,13 @@ real-time audio enhancement and multi-channel pipeline visualization.
   - [Training manual web page](https://infineon.github.io/mtb-training-psoc-edge-adv-voice-audio)
 - [Lab solutions](https://github.com/Infineon/mtb-training-psoc-edge-adv-voice-audio/tree/main/Lab_Source)
 
+## More PSOC™ Edge training
+- [PSOC™ Edge E8x2/E8x3/E8x5/E8x6 training](https://github.com/Infineon/psoc-training-edge-e8x6) — Landing page with the full learning path and all PSOC™ Edge trainings, including security, graphics, voice and audio, and machine learning.
+- [PSOC™ Edge training collection at Infineon Academy](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd) — Collection of videos for PSOC™ Edge trainings.
+
 ## References and resources
 - [PSOC™ Edge MCUs](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm)
-- [PSOC™ Developer Journey](https://www.infineon.com/PSOCdeveloper)
-- [PSOC™ Edge E84 Training Collection](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd)
+- [PSOC™ Developer Journey](https://www.infineon.com/psocdeveloper)
 - [DEEPCRAFT™ Audio Enhancement Tech Pack](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.deepcraftaudioenhancementtechpack)
 - [Audacity](https://www.audacityteam.org/download/)
 

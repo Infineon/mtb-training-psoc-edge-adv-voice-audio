@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -916,7 +916,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w">    </span><span class="cm">/* Set initial gain */</span>
 <span class="w">    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gain: Scale Value = %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Gain: Scale Value = %d</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_available</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -930,7 +930,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="kt">char</span><span class="w"> </span><span class="n">received_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">read_value</span><span class="p">;</span>
 <span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">gain_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'u'</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="cm">/* Increase gain */</span>
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_scale</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_GAIN_83DB</span><span class="p">)</span>
@@ -940,10 +940,10 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="k">else</span>
 <span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Already at maximum gain!</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Already at maximum gain!</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
-<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">received_char</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'d'</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="cm">/* Decrease gain */</span>
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_scale</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CY_PDM_PCM_SEL_GAIN_NEGATIVE_103DB</span><span class="p">)</span>
@@ -953,7 +953,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="k">else</span>
 <span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Already at minimum gain!</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Already at minimum gain!</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gain_changed</span><span class="p">)</span>
@@ -961,7 +961,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w">                    </span><span class="cm">/* Apply new gain to both channels */</span>
 <span class="w">                    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
 <span class="w">                    </span><span class="n">Cy_PDM_PCM_SetGain</span><span class="p">(</span><span class="n">CYBSP_PDM_HW</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT_CH_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Gain: Scale value = %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Gain: Scale value = %d</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">current_scale</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -978,7 +978,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w"> </span>   ...
 
 <span class="w"> </span>   /* Create the AUDIO Write RTOS task */
-<span class="w"> </span>   rtos_task_status = xTaskCreate(audio_in_process, &quot;Audio In Task&quot;, AUDIO_TASK_STACK_DEPTH, NULL,
+<span class="w"> </span>   rtos_task_status = xTaskCreate(audio_in_process, "Audio In Task", AUDIO_TASK_STACK_DEPTH, NULL,
 <span class="w"> </span>           AUDIO_WRITE_TASK_PRIORITY, &amp;rtos_audio_in_task);
 <span class="w"> </span>   if (pdPASS != rtos_task_status)
 <span class="w"> </span>   {
@@ -987,7 +987,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 
 <span class="gi">+   /** &lt;-- Add code to create task --&gt; **/</span>
 <span class="gi">+   /* Create the Audio Gain Control RTOS task with lower priority */</span>
-<span class="gi">+    rtos_task_status = xTaskCreate(audio_gain_control_task, &quot;Gain Control Task&quot;, 512u, NULL, 1u, NULL);</span>
+<span class="gi">+    rtos_task_status = xTaskCreate(audio_gain_control_task, "Gain Control Task", 512u, NULL, 1u, NULL);</span>
 <span class="gi">+    if (pdPASS != rtos_task_status)</span>
 <span class="gi">+    {</span>
 <span class="gi">+        handle_app_error();</span>
@@ -1413,7 +1413,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="gd">-   /* Set initial gain */</span>
 <span class="gd">-   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, LEFT_CH_INDEX, current_scale);</span>
 <span class="gd">-   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, RIGHT_CH_INDEX, current_scale);</span>
-<span class="gd">-   printf(&quot;Gain: Scale Value = %d\r\n&quot;, current_scale);</span>
+<span class="gd">-   printf("Gain: Scale Value = %d\r\n", current_scale);</span>
 
 <span class="w"> </span>   for (;;)
 <span class="w"> </span>   {
@@ -1428,7 +1428,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="w"> </span>           {
 <span class="w"> </span>               char received_char = (char)read_value;
 <span class="w"> </span>               bool gain_changed = false;
-<span class="w"> </span>               if (received_char == &#39;u&#39;)
+<span class="w"> </span>               if (received_char == 'u')
 <span class="w"> </span>               {
 <span class="w"> </span>                   /* Increase gain */
 <span class="gi">+                   /** &lt;-- Modify routine --&gt;**/</span>
@@ -1439,10 +1439,10 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="gi">+                    } /** &lt;-- End of modified routine --&gt;**/</span>
 <span class="w"> </span>                   else
 <span class="w"> </span>                   {
-<span class="w"> </span>                       printf(&quot;Already at maximum gain!\r\n&quot;);
+<span class="w"> </span>                       printf("Already at maximum gain!\r\n");
 <span class="w"> </span>                   }
 <span class="w"> </span>               }
-<span class="w"> </span>               else if (received_char == &#39;d&#39;)
+<span class="w"> </span>               else if (received_char == 'd')
 <span class="w"> </span>               {
 <span class="w"> </span>                   /* Decrease gain */
 <span class="gi">+                   /** &lt;-- Modify routine --&gt;**/</span>
@@ -1453,7 +1453,7 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="gi">+                    } /** &lt;-- End of modified routine --&gt;**/</span>
 <span class="w"> </span>                   else
 <span class="w"> </span>                   {
-<span class="w"> </span>                       printf(&quot;Already at minimum gain!\r\n&quot;);
+<span class="w"> </span>                       printf("Already at minimum gain!\r\n");
 <span class="w"> </span>                   }
 <span class="w"> </span>               }
 <span class="w"> </span>               if (gain_changed)
@@ -1462,8 +1462,8 @@ const cy_stc_pdm_pcm_channel_config_t pdm_pcm_channel_3_config =
 <span class="gd">-                   /* Apply new gain to both channels */</span>
 <span class="gd">-                   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, LEFT_CH_INDEX, current_scale);</span>
 <span class="gd">-                   Cy_PDM_PCM_SetGain(CYBSP_PDM_HW, RIGHT_CH_INDEX, current_scale);</span>
-<span class="gd">-                   printf(&quot;Gain: Scale value = %d\r\n&quot;, current_scale);</span>
-<span class="gi">+                   printf(&quot;Gain: SW Gain value = %d\r\n&quot;, sw_gain);</span>
+<span class="gd">-                   printf("Gain: Scale value = %d\r\n", current_scale);</span>
+<span class="gi">+                   printf("Gain: SW Gain value = %d\r\n", sw_gain);</span>
 <span class="gi">+                   /**&lt;-- End of replaced routine --&gt;**/</span>
 <span class="w"> </span>               }
 <span class="w"> </span>           }
@@ -2113,7 +2113,7 @@ Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENS
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.footer", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="javascripts/mathjax.js"></script>
       
